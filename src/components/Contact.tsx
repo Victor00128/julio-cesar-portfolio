@@ -2,13 +2,9 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaEnvelope, FaLinkedin, FaGithub, FaPaperPlane, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa'
 
-// -----------------------------------------------------
-// INSTRUCCIONES PARA ACTIVAR EL FORMULARIO:
-// 1. Ve a https://formspree.io y crea una cuenta gratis
-// 2. Crea un nuevo formulario
-// 3. Reemplaza el ACTION_URL de abajo con tu endpoint
-// -----------------------------------------------------
-const FORMSPREE_URL = 'https://formspree.io/f/mvzbnkwk'
+// Permite override por entorno y mantiene el endpoint actual como fallback.
+const FORMSPREE_URL =
+  import.meta.env.VITE_FORMSPREE_URL || 'https://formspree.io/f/mvzbnkwk'
 
 const socialLinks = [
   {
