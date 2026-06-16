@@ -2,7 +2,7 @@
 
 Portafolio personal construido con **React 19 + TypeScript + Vite + Tailwind CSS v4**.
 
-**Demo:** [juliocesar-dev.netlify.app](https://juliocesar-dev.netlify.app)
+**Demo:** [julio-cesar-morales.netlify.app](https://julio-cesar-morales.netlify.app)
 
 ## Caracteristicas
 
