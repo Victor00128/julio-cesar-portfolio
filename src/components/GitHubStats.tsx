@@ -144,7 +144,7 @@ export default function GitHubStats() {
                 Actualizar
               </button>
             </div>
-            {stats.languages.map((lang, i) => (
+            {stats.languages.map((lang) => (
               <LanguageBar
                 key={lang.name}
                 name={lang.name}
