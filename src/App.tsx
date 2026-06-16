@@ -8,7 +8,7 @@ import CurrentStatus from './components/CurrentStatus'
 import Contact from './components/Contact'
 import Education from './components/Education'
 import Experience from './components/Experience'
-import { FaTerminal, FaDownload, FaBriefcase } from 'react-icons/fa'
+import { FaTerminal, FaDownload, FaBriefcase, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 
 // Navegación — agregué Experiencia y Educación
 const nav = [
@@ -178,6 +178,31 @@ export default function App() {
               </span>
               Disponible para proyectos
             </a>
+          </motion.div>
+
+          {/* Social links rápidos */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.9 }}
+            className="flex justify-center gap-4 mt-6"
+          >
+            {[
+              { href: 'https://github.com/Victor00128', icon: <FaGithub />, label: 'GitHub' },
+              { href: 'https://www.linkedin.com/in/julio-cesar-406314373/', icon: <FaLinkedin />, label: 'LinkedIn' },
+              { href: 'mailto:juliocesarmoralesalvarado9@gmail.com', icon: <FaEnvelope />, label: 'Email' },
+            ].map(s => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="w-10 h-10 flex items-center justify-center rounded-lg border border-dark-border text-gray-400 hover:text-cyan-accent hover:border-cyan-accent/40 hover:bg-cyan-accent/5 transition-all text-lg"
+              >
+                {s.icon}
+              </a>
+            ))}
           </motion.div>
 
           {/* Scroll indicator */}
