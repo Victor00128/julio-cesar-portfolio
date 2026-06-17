@@ -1,31 +1,31 @@
-# Portafolio - Julio Cesar Morales
+# Portfolio — Julio Cesar Morales
 
-Portafolio personal construido con **React 19 + TypeScript + Vite + Tailwind CSS v4**.
+Personal portfolio built with **React 19 + TypeScript + Vite + Tailwind CSS v4**.
 
 **Demo:** [julio-cesar-morales.netlify.app](https://julio-cesar-morales.netlify.app)
 
-## Caracteristicas
+## Features
 
-- Diseno moderno y responsive
-- Accesibilidad base cuidada
-- SEO tecnico y metadata completa
-- Stats de GitHub con cache
-- Formulario de contacto con Formspree
-- Estructura preparada para seguir creciendo
+- Modern, responsive design
+- Solid baseline accessibility
+- Technical SEO and complete metadata
+- GitHub stats with caching
+- Contact form with Formspree
+- Structure ready to keep growing
 
-## Stack tecnologico
+## Tech stack
 
-| Categoria | Tecnologia |
+| Category | Technology |
 |-----------|-----------|
 | Framework | React 19 |
-| Lenguaje | TypeScript 5 |
+| Language | TypeScript 5 |
 | Build tool | Vite |
 | Styling | Tailwind CSS v4 |
-| Animaciones | Framer Motion |
-| Iconos | React Icons |
+| Animations | Framer Motion |
+| Icons | React Icons |
 | Deploy | Netlify / Vercel |
 
-## Instalacion
+## Installation
 
 ```bash
 git clone https://github.com/Victor00128/julio-cesar-portfolio.git
@@ -34,35 +34,35 @@ npm install
 npm run dev
 ```
 
-El proyecto estara disponible en `http://localhost:5173`.
+The project will be available at `http://localhost:5173`.
 
-## Variables de entorno
+## Environment variables
 
-El repositorio incluye `.env.example`.
+The repository includes `.env.example`.
 
-- `VITE_FORMSPREE_URL`: opcional si quieres sobrescribir el endpoint actual del formulario
-- `VITE_GA_ID`: opcional para analytics
-- `VITE_GITHUB_URL`, `VITE_LINKEDIN_URL`, `VITE_EMAIL`: overrides opcionales
+- `VITE_FORMSPREE_URL`: optional, if you want to override the form's current endpoint
+- `VITE_GA_ID`: optional, for analytics
+- `VITE_GITHUB_URL`, `VITE_LINKEDIN_URL`, `VITE_EMAIL`: optional overrides
 
 ```bash
 cp .env.example .env
 ```
 
-## Deploy en produccion
+## Production deploy
 
 ### Netlify
 
-1. Sube el codigo a GitHub.
-2. Importa el repositorio en Netlify.
-3. Usa `npm run build` como build command.
-4. Usa `dist` como publish directory.
+1. Push the code to GitHub.
+2. Import the repository in Netlify.
+3. Use `npm run build` as the build command.
+4. Use `dist` as the publish directory.
 
 ### Vercel
 
-1. Ejecuta `vercel`.
-2. Sigue las instrucciones del CLI.
+1. Run `vercel`.
+2. Follow the CLI instructions.
 
-## Estructura del proyecto
+## Project structure
 
 ```text
 src/
@@ -75,7 +75,7 @@ public/
 └── CV-Julio-Cesar.pdf
 ```
 
-## Comandos disponibles
+## Available commands
 
 ```bash
 npm run dev
@@ -83,11 +83,11 @@ npm run build
 npm run preview
 ```
 
-## Notas
+## Notes
 
-- Si haces fork del proyecto, cambia los datos de contacto y el endpoint de Formspree.
-- Las instrucciones para preparar el CV quedaron movidas a `docs/CV-INSTRUCTIONS.md`.
+- If you fork the project, change the contact details and the Formspree endpoint.
+- The CV preparation instructions were moved to `docs/CV-INSTRUCTIONS.md`.
 
-## Licencia
+## License
 
-MIT. Ver el archivo [LICENSE](LICENSE).
+MIT. See the [LICENSE](LICENSE) file.
