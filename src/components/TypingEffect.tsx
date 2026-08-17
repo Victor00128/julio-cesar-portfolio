@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 const phrases = [
   'Hola, soy Julio Cesar 👋',
   'Full Stack Developer',
-  'Construyo cosas con IA',
+  'Integro IA en aplicaciones web',
   'Disponible para trabajar',
 ];
 
