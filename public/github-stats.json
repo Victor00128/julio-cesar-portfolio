@@ -1,0 +1,54 @@
+{
+  "repos": 6,
+  "ownRepos": 6,
+  "stars": 2,
+  "forks": 0,
+  "commits": 116,
+  "followers": 0,
+  "languages": [
+    {
+      "name": "TypeScript",
+      "bytes": 1297695,
+      "percent": 94.7,
+      "color": "#0099cc"
+    },
+    {
+      "name": "CSS",
+      "bytes": 30327,
+      "percent": 2.2,
+      "color": "#0077aa"
+    },
+    {
+      "name": "JavaScript",
+      "bytes": 24689,
+      "percent": 1.8,
+      "color": "#00C9FF"
+    },
+    {
+      "name": "Python",
+      "bytes": 8208,
+      "percent": 0.6,
+      "color": "#005577"
+    },
+    {
+      "name": "HTML",
+      "bytes": 6728,
+      "percent": 0.5,
+      "color": "#00e5ff"
+    },
+    {
+      "name": "Dockerfile",
+      "bytes": 1234,
+      "percent": 0.1,
+      "color": "hsl(225, 90%, 50%)"
+    },
+    {
+      "name": "Shell",
+      "bytes": 778,
+      "percent": 0.1,
+      "color": "#00b8e6"
+    }
+  ],
+  "profileUrl": "https://github.com/Victor00128",
+  "updatedAt": 1787111374260
+}

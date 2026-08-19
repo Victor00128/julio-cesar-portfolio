@@ -23,8 +23,8 @@ function LanguageBar({ name, percent, color }: { name: string; percent: number; 
   return (
     <div className="mb-2">
       <div className="flex justify-between text-xs mb-1">
-        <span className="text-gray-400">{name}</span>
-        <span className="text-gray-500 font-mono">{percent.toFixed(1)}%</span>
+        <span className="text-gray-300">{name}</span>
+        <span className="text-gray-300 font-mono">{percent.toFixed(1)}%</span>
       </div>
       <div className="h-2 bg-dark-border rounded-full overflow-hidden">
         <motion.div
@@ -61,7 +61,7 @@ export default function GitHubStats() {
           <p className="text-red-400 text-sm mb-3">
             No se pudieron cargar las stats de GitHub
           </p>
-          <p className="text-gray-500 text-xs font-mono mb-4">{error}</p>
+          <p className="text-gray-300 text-xs font-mono mb-4">{error}</p>
           <button
             onClick={refresh}
             className="px-4 py-2 rounded-lg bg-cyan-accent/10 border border-cyan-accent/30 text-cyan-accent text-sm hover:bg-cyan-accent/20 transition-all"
@@ -117,11 +117,11 @@ export default function GitHubStats() {
                   <stat.icon className="text-cyan-accent" />
                 </div>
                 <div>
-                  <div className="text-gray-500 text-xs font-mono">{stat.label}</div>
+                  <div className="text-gray-300 text-xs font-mono">{stat.label}</div>
                   <div className="text-2xl font-bold text-white">{stat.value}</div>
                 </div>
               </div>
-              <div className="text-gray-600 text-xs">{stat.sublabel}</div>
+              <div className="text-gray-400 text-xs">{stat.sublabel}</div>
             </motion.div>
           ))}
         </div>
@@ -138,7 +138,7 @@ export default function GitHubStats() {
               <h3 className="text-white font-semibold text-sm">Lenguajes Más Usados</h3>
               <button
                 onClick={refresh}
-                className="text-xs text-cyan-accent hover:underline font-mono"
+                className="px-3 py-2 -mr-1 rounded-lg text-xs text-cyan-accent hover:bg-cyan-accent/10 hover:underline font-mono transition-colors"
                 title="Actualizar datos"
               >
                 Actualizar
@@ -153,7 +153,7 @@ export default function GitHubStats() {
               />
             ))}
             <div className="mt-4 pt-3 border-t border-dark-border">
-              <p className="text-gray-600 text-[10px] font-mono">
+              <p className="text-gray-400 text-[10px] font-mono">
                 Actualizado: {new Date(stats.updatedAt).toLocaleDateString('es-UY', {
                   day: '2-digit',
                   month: 'short',
@@ -177,7 +177,7 @@ export default function GitHubStats() {
             href={stats.profileUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1a1a2e] border border-dark-border hover:border-cyan-accent/40 text-gray-400 hover:text-cyan-accent transition-all text-sm font-medium"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1a1a2e] border border-dark-border hover:border-cyan-accent/40 text-gray-300 hover:text-cyan-accent transition-all text-sm font-medium"
           >
             <FaGithub className="text-base" />
             Ver perfil completo en GitHub

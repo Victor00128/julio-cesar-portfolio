@@ -1,0 +1,40 @@
+name: Refrescar GitHub stats
+
+# Las stats se resuelven aquí, no en el navegador de cada visitante.
+on:
+  schedule:
+    - cron: '0 5 * * 1' # lunes a las 05:00 UTC
+  workflow_dispatch: # y a mano cuando haga falta
+
+permissions:
+  contents: write
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generar github-stats.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/fetch-github-stats.mjs
+
+      - name: Commit si cambió algo
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          if git diff --quiet public/github-stats.json; then
+            echo "Sin cambios en las stats."
+          else
+            git add public/github-stats.json
+            git commit -m 'chore: refrescar github stats'
+            git push
+          fi
