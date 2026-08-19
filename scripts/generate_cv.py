@@ -101,7 +101,7 @@ PROJECTS = [
         ],
         "tech": "Next.js, TypeScript, E2B Sandbox, OpenRouter",
         "links": [
-            ("Demo", "https://nexus-psi-gilt.vercel.app/"),
+            ("Demo", "https://nexus-exec.vercel.app/"),
             ("Repo", "https://github.com/Victor00128/NEXUS"),
         ],
     },

@@ -31,7 +31,7 @@ const projects: Project[] = [
     image: '/projects/nexus.webp',
     tags: ['Next.js', 'TypeScript', 'AI Agents', 'E2B Sandbox', 'OpenRouter', 'Tailwind'],
     github: 'https://github.com/Victor00128/NEXUS',
-    demo: 'https://nexus-psi-gilt.vercel.app/',
+    demo: 'https://nexus-exec.vercel.app/',
     gradient: 'from-[#0a1628] to-[#0a0a14]',
     featured: true,
     status: 'live',

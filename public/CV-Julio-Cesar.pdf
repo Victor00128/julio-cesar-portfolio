@@ -66,7 +66,7 @@ endobj
 11 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://nexus-psi-gilt.vercel.app/)
+/S /URI /Type /Action /URI (https://nexus-exec.vercel.app/)
 >> /Border [ 0 0 0 ] /Rect [ 333.9156 402.02 356.3184 412.1 ] /Subtype /Link /Type /Annot
 >>
 endobj
@@ -118,7 +118,7 @@ endobj
 endobj
 17 0 obj
 <<
-/Author (Julio Cesar Morales Alvarado) /CreationDate (D:20260819194228-03'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20260819194228-03'00') /Producer (ReportLab PDF Library - \(opensource\)) 
+/Author (Julio Cesar Morales Alvarado) /CreationDate (D:20260819200011-03'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20260819200011-03'00') /Producer (ReportLab PDF Library - \(opensource\)) 
   /Subject (Curriculum Vitae) /Title (CV - Julio Cesar Morales Alvarado) /Trapped /False
 >>
 endobj
@@ -148,18 +148,18 @@ xref
 0000098133 00000 n 
 0000098216 00000 n 
 0000098394 00000 n 
-0000098576 00000 n 
-0000098760 00000 n 
-0000098942 00000 n 
-0000099135 00000 n 
-0000099542 00000 n 
-0000099612 00000 n 
-0000099929 00000 n 
-0000099990 00000 n 
+0000098572 00000 n 
+0000098756 00000 n 
+0000098938 00000 n 
+0000099131 00000 n 
+0000099538 00000 n 
+0000099608 00000 n 
+0000099925 00000 n 
+0000099986 00000 n 
 trailer
 <<
 /ID 
-[<75913f671c4921fe805f3ab6f532cdc7><75913f671c4921fe805f3ab6f532cdc7>]
+[<4d017ce1d911ffcd8e590c34365c4ce7><4d017ce1d911ffcd8e590c34365c4ce7>]
 % ReportLab generated PDF document -- digest (opensource)
 
 /Info 17 0 R
@@ -167,5 +167,5 @@ trailer
 /Size 20
 >>
 startxref
-106213
+106209
 %%EOF
