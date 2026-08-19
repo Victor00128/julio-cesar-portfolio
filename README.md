@@ -5,7 +5,7 @@
 
 Personal portfolio built with **React 19 + TypeScript + Vite + Tailwind CSS v4**.
 
-**Live:** [julio-cesar-morales.netlify.app](https://julio-cesar-morales.netlify.app)
+**Live:** [julio-cesar-portfolio.vercel.app](https://julio-cesar-portfolio.vercel.app)
 
 ![Portfolio preview](./public/og-image.png)
 

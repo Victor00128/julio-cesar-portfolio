@@ -48,8 +48,8 @@ GITHUB = "https://github.com/Victor00128"
 GITHUB_LABEL = "github.com/Victor00128"
 LINKEDIN = "https://www.linkedin.com/in/julio-cesar-406314373/"
 LINKEDIN_LABEL = "linkedin.com/in/julio-cesar"
-SITE = "https://julio-cesar-morales.netlify.app"
-SITE_LABEL = "julio-cesar-morales.netlify.app"
+SITE = "https://julio-cesar-portfolio.vercel.app"
+SITE_LABEL = "julio-cesar-portfolio.vercel.app"
 LOCATION = "Montevideo, Uruguay (UTC-3)"
 AVAILABILITY = "Disponible · remoto"
 
@@ -64,7 +64,7 @@ SKILLS = {
     "Frontend": ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Vite", "Next.js"],
     "Backend": ["Node.js", "Hono", "REST APIs", "Sesiones y roles", "Supabase"],
     "IA": ["Gemini API", "OpenAI API", "OpenRouter", "Sandbox E2B"],
-    "Herramientas": ["Git", "GitHub", "Netlify", "Despliegue continuo"],
+    "Herramientas": ["Git", "GitHub", "Vercel", "Netlify", "Despliegue continuo"],
 }
 
 LANGUAGES = [("Español", "Nativo"), ("Inglés", "Técnico")]
