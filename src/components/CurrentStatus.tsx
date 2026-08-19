@@ -54,19 +54,18 @@ export default function CurrentStatus() {
           </div>
           <div>
             <div className="text-cyan-accent text-sm font-mono font-semibold mb-1">{s.label}</div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              {s.text}
-              {s.link && (
-                <a
-                  href={s.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-cyan-accent hover:underline ml-1"
-                >
-                  →
-                </a>
-              )}
-            </p>
+            <p className="text-gray-300 text-sm leading-relaxed">{s.text}</p>
+            {s.link && (
+              <a
+                href={s.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 mt-2 px-3 py-2 -ml-3 rounded-lg text-cyan-accent text-sm hover:bg-cyan-accent/10 transition-colors"
+              >
+                Ver el repo
+                <span aria-hidden="true">→</span>
+              </a>
+            )}
           </div>
         </motion.div>
       ))}

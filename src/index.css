@@ -94,10 +94,28 @@ body {
   font-family: 'Space Grotesk', sans-serif;
 }
 
+/* El foco tiene que verse. Antes era outline:none + un halo cian al 8% sobre
+   fondo casi negro: invisible, y navegar el formulario con Tab era a ciegas. */
+.form-input:focus-visible {
+  outline: 2px solid #00C9FF;
+  outline-offset: 2px;
+  border-color: #00C9FF;
+}
+
 .form-input:focus {
-  outline: none;
-  border-color: #00C9FF55;
-  box-shadow: 0 0 0 3px #00C9FF15;
+  border-color: #00C9FF;
+  box-shadow: 0 0 0 3px #00C9FF33;
+}
+
+/* Foco visible y consistente en todo lo navegable */
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #00C9FF;
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 .form-input::placeholder {

@@ -80,12 +80,12 @@ export default function Contact() {
         {/* ---- Columna izquierda: info + redes ---- */}
         <div className="lg:col-span-2 space-y-6">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
             <h3 className="text-white font-semibold text-lg mb-2">¿Hablamos?</h3>
-            <p className="text-gray-400 text-sm leading-relaxed">
+            <p className="text-gray-300 text-sm leading-relaxed">
               Estoy disponible para proyectos freelance, colaboraciones o simplemente para charlar
               sobre tecnología e IA. Respondo en menos de 24 horas.
             </p>
@@ -93,8 +93,8 @@ export default function Contact() {
 
           {/* Badge disponible */}
           <motion.div
-            initial={{ opacity: 0, x: -15 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="available-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30"
@@ -106,27 +106,27 @@ export default function Contact() {
             <span className="text-green-400 text-sm font-mono">Disponible para trabajar</span>
           </motion.div>
 
-          {/* Redes sociales */}
-          <div className="space-y-3" role="list" aria-label="Redes sociales y contacto">
+          {/* Redes sociales — sin role="listitem" sobre el <a>: ARIA pisa el rol
+              nativo y el lector de pantalla deja de anunciarlos como enlaces */}
+          <div className="space-y-3">
             {socialLinks.map((l, i) => (
               <motion.a
                 key={l.label}
                 href={l.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                role="listitem"
                 aria-label={`Contactar por ${l.label}: ${l.description}`}
-                initial={{ opacity: 0, x: -15 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 + 0.2 }}
                 whileHover={{ x: 4 }}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl bg-dark-card border border-dark-border text-gray-400 transition-all duration-200 ${l.color}`}
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl bg-dark-card border border-dark-border text-gray-300 transition-all duration-200 ${l.color}`}
               >
                 <l.icon className="text-lg flex-shrink-0" aria-hidden="true" />
-                <div>
+                <div className="min-w-0">
                   <div className="font-medium text-sm leading-tight">{l.label}</div>
-                  <div className="text-xs text-gray-600 font-mono">{l.description}</div>
+                  <div className="text-xs text-gray-400 font-mono truncate">{l.description}</div>
                 </div>
               </motion.a>
             ))}
@@ -135,8 +135,8 @@ export default function Contact() {
 
         {/* ---- Columna derecha: formulario ---- */}
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="lg:col-span-3"
         >
@@ -146,7 +146,7 @@ export default function Contact() {
               <div className="w-3 h-3 rounded-full bg-red-500/80" />
               <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
               <div className="w-3 h-3 rounded-full bg-green-500/80" />
-              <span className="ml-2 text-gray-600 text-xs font-mono">contact.tsx</span>
+              <span className="ml-2 text-gray-400 text-xs font-mono">contact.tsx</span>
             </div>
 
             {formState === 'success' ? (
@@ -157,7 +157,7 @@ export default function Contact() {
               >
                 <FaCheckCircle className="text-green-400 text-4xl mb-4" />
                 <h4 className="text-white font-semibold text-lg mb-2">¡Mensaje enviado!</h4>
-                <p className="text-gray-400 text-sm">Te respondo antes de 24 horas. Gracias por escribir 🙌</p>
+                <p className="text-gray-300 text-sm">Te respondo antes de 24 horas. Gracias por escribir 🙌</p>
                 <button
                   onClick={() => setFormState('idle')}
                   className="mt-6 px-4 py-2 rounded-lg border border-cyan-accent/30 text-cyan-accent text-sm hover:bg-cyan-accent/10 transition-all"
@@ -169,7 +169,7 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-4" aria-label="Formulario de contacto">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="text-gray-500 text-xs font-mono mb-1.5 block">Nombre *</label>
+                    <label htmlFor="name" className="text-gray-300 text-xs font-mono mb-1.5 block">Nombre *</label>
                     <input
                       id="name"
                       type="text"
@@ -183,7 +183,7 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="text-gray-500 text-xs font-mono mb-1.5 block">Email *</label>
+                    <label htmlFor="email" className="text-gray-300 text-xs font-mono mb-1.5 block">Email *</label>
                     <input
                       id="email"
                       type="email"
@@ -199,7 +199,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="text-gray-500 text-xs font-mono mb-1.5 block">Asunto</label>
+                  <label htmlFor="subject" className="text-gray-300 text-xs font-mono mb-1.5 block">Asunto</label>
                   <select
                     id="subject"
                     name="subject"
@@ -217,7 +217,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="text-gray-500 text-xs font-mono mb-1.5 block">Mensaje *</label>
+                  <label htmlFor="message" className="text-gray-300 text-xs font-mono mb-1.5 block">Mensaje *</label>
                   <textarea
                     id="message"
                     name="message"
