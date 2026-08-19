@@ -71,8 +71,9 @@ const projects: Project[] = [
     icon: <FaCarSide className="text-5xl sm:text-7xl" />,
     tags: ['TypeScript', 'React', 'Canvas 2D', 'Game Dev'],
     github: 'https://github.com/Victor00128/Escape-Driver',
+    demo: 'https://escape-driver.vercel.app/',
     gradient: 'from-[#1a0a28] to-[#0a0a14]',
-    status: 'completed',
+    status: 'live',
   },
 ]
 
