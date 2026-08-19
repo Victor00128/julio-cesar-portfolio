@@ -100,7 +100,10 @@ PROJECTS = [
             "Interfaz que muestra el plan y el razonamiento paso a paso.",
         ],
         "tech": "Next.js, TypeScript, E2B Sandbox, OpenRouter",
-        "links": [("Repo", "https://github.com/Victor00128/NEXUS")],
+        "links": [
+            ("Demo", "https://nexus-psi-gilt.vercel.app/"),
+            ("Repo", "https://github.com/Victor00128/NEXUS"),
+        ],
     },
     {
         "role": "Chatbot Vortex – Cliente multiproveedor de IA",
