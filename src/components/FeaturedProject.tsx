@@ -24,7 +24,7 @@ const projects: Project[] = [
   {
     title: 'NEXUS',
     description:
-      'Workspace de IA multi-modelo con un agente autónomo: planifica, ejecuta código en un sandbox cloud real y construye archivos por ti. Orquestación multi-modelo (RACE/SYNTHESIS), análisis de archivos y UI de razonamiento estilo Claude.',
+      'Workspace de IA multi-modelo con un agente autónomo: planifica, ejecuta código en un sandbox cloud real y construye archivos por ti. Orquestación multi-modelo (RACE/SYNTHESIS), análisis de archivos y una interfaz que muestra el razonamiento paso a paso.',
     story:
       'Quería un chat que ejecutara el trabajo en vez de describirlo. Lo que más me costó fue el loop del agente contra el sandbox de E2B: saber cuándo parar, y recuperar los archivos que genera dentro del contenedor para poder descargarlos.',
     icon: <FaBrain className="text-5xl sm:text-7xl" />,
