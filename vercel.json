@@ -5,28 +5,36 @@
   "outputDirectory": "dist",
   "headers": [
     {
-      "comment": "Los assets llevan hash en el nombre: si cambia el contenido, cambia la URL. Se pueden cachear para siempre.",
       "source": "/assets/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
-      "comment": "Imagenes sin hash: se cachean un dia y se revalidan en segundo plano durante una semana.",
-      "source": "/(foto-julio.webp|og-image.png|projects/(.*).webp)",
+      "source": "/projects/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
       ]
     },
     {
-      "comment": "Las stats se regeneran cada lunes; una hora de cache basta.",
+      "source": "/foto-julio.webp",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/og-image.png",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
       "source": "/github-stats.json",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }
       ]
     },
     {
-      "comment": "El CV cambia poco pero cuando cambia interesa que se vea ya.",
       "source": "/CV-Julio-Cesar.pdf",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
