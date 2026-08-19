@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
-import { FaGraduationCap, FaCertificate, FaBookOpen } from 'react-icons/fa'
-import { SiUdemy } from 'react-icons/si'
+import { FaGraduationCap, FaLaptopCode, FaBookOpen, FaUniversity } from 'react-icons/fa'
 
 // -----------------------------------------------
 // Mis estudios y cursos completados
@@ -8,7 +7,7 @@ import { SiUdemy } from 'react-icons/si'
 // -----------------------------------------------
 
 interface EduItem {
-  type: 'degree' | 'course' | 'cert'
+  type: 'degree' | 'course' | 'self'
   title: string
   institution: string
   year: string
@@ -20,68 +19,52 @@ interface EduItem {
 const education: EduItem[] = [
   {
     type: 'degree',
-    title: 'Bachillerato Técnico en Informática',
-    institution: 'Institución Educativa Técnica',
-    year: '2022 – 2024',
-    description:
-      'Base sólida en fundamentos de programación, redes, bases de datos y lógica de sistemas. Donde empecé a entender por qué la tecnología me apasiona tanto.',
-    tags: ['Programación', 'Redes', 'Bases de Datos'],
-  },
-  {
-    type: 'course',
-    title: 'React + TypeScript – De cero a experto',
-    institution: 'Udemy',
-    year: '2023',
-    description:
-      'Curso completo donde aprendí hooks, context API, patrones modernos y TypeScript aplicado a proyectos reales. Lo hice en paralelo mientras construía mis primeros proyectos.',
-    tags: ['React', 'TypeScript', 'Hooks', 'Context API'],
-    link: 'https://www.udemy.com',
-  },
-  {
-    type: 'course',
-    title: 'Node.js, Express & REST APIs',
-    institution: 'Udemy / Platzi',
-    year: '2023',
-    description:
-      'Aprendí a construir APIs RESTful, manejo de autenticación con JWT, bases de datos con PostgreSQL y despliegue en servicios cloud.',
-    tags: ['Node.js', 'Express', 'JWT', 'PostgreSQL'],
-  },
-  {
-    type: 'cert',
-    title: 'Integración de LLMs y APIs de IA',
-    institution: 'Autodidacta + Documentación oficial',
+    title: 'Bachillerato completo',
+    institution: 'Uruguay',
     year: '2024',
     description:
-      'Aprendí a integrar Gemini AI y GPT-4 en aplicaciones web reales, construyendo el Chatbot Vortex como proyecto final. Mucho trial & error 😅 pero valió la pena.',
-    tags: ['Gemini AI', 'GPT-4', 'LangChain', 'Prompt Engineering'],
+      'Formación secundaria terminada. La parte de programación no salió de ahí: la aprendí por mi cuenta, en paralelo.',
+    tags: ['Secundaria'],
   },
   {
     type: 'course',
-    title: 'Tailwind CSS + Diseño UI Moderno',
-    institution: 'YouTube / Documentación',
-    year: '2023',
+    title: 'CS50x – Introduction to Computer Science',
+    institution: 'Harvard University · en curso',
+    year: 'En curso',
     description:
-      'Dominio de Tailwind CSS v3/v4, diseño responsive, dark mode y sistemas de diseño. La mayor parte la aprendí construyendo interfaces y viendo qué se veía bien.',
-    tags: ['Tailwind CSS', 'UI/UX', 'Diseño Responsive'],
+      'Lo estoy cursando ahora, por las semanas de algoritmos. Llevo entregados los problem sets hasta Tideman, que resuelve elecciones por pares ordenados con un grafo sin ciclos. Es la parte de fundamentos en C que no cubrí aprendiendo por mi cuenta: punteros, memoria y complejidad.',
+    tags: ['C', 'Algoritmos', 'Estructuras de datos', 'Grafos'],
+    link: 'https://cs50.harvard.edu/x/',
+  },
+  {
+    type: 'self',
+    title: 'React, TypeScript e integración de APIs de IA',
+    institution: 'Autodidacta: documentación y proyectos propios',
+    year: '2022 – Presente',
+    description:
+      'No lo aprendí en cursos sino construyendo. Cada cosa que sé la saqué de la documentación oficial y de romper algo en un proyecto propio hasta entenderlo: hooks y estado en React, tipado en TypeScript, y cómo se conectan de verdad las APIs de Gemini y OpenAI a una interfaz.',
+    tags: ['React', 'TypeScript', 'Gemini API', 'OpenAI API'],
   },
 ]
 
 const iconMap = {
   degree: FaGraduationCap,
-  course: SiUdemy,
-  cert: FaCertificate,
+  course: FaUniversity,
+  self: FaLaptopCode,
 }
 
 const colorMap = {
   degree: 'text-cyan-accent border-cyan-accent/30 bg-cyan-accent/10',
-  course: 'text-purple-accent border-purple-accent/30 bg-purple-accent/10',
-  cert: 'text-green-400 border-green-400/30 bg-green-400/10',
+  course: 'text-purple-300 border-purple-300/30 bg-purple-300/10',
+  self: 'text-green-400 border-green-400/30 bg-green-400/10',
 }
 
+// Nada de "Certificación" para lo que aprendí solo: no lo es, y decirlo
+// exacto da más confianza que inflarlo.
 const labelMap = {
   degree: 'Formación',
   course: 'Curso',
-  cert: 'Certificación',
+  self: 'Formación autodidacta',
 }
 
 export default function Education() {
@@ -94,10 +77,10 @@ export default function Education() {
         viewport={{ once: true }}
         className="text-center mb-10"
       >
-        <p className="text-gray-400 text-sm max-w-xl mx-auto">
-          Mi aprendizaje es una mezcla de formación técnica y autodidactismo.
-          <span className="text-cyan-accent"> Construir proyectos reales</span> siempre fue
-          mi método favorito para aprender.
+        <p className="text-gray-300 text-sm max-w-xl mx-auto">
+          Terminé el bachillerato y el resto lo aprendí solo.
+          <span className="text-cyan-accent"> Casi todo lo que sé hacer</span> salió de
+          construir algo que no me funcionaba hasta que funcionó.
         </p>
       </motion.div>
 
@@ -115,8 +98,8 @@ export default function Education() {
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.45 }}
                 className="sm:pl-16 relative"
@@ -139,8 +122,8 @@ export default function Education() {
                           {item.title}
                         </h3>
                         <div className="flex items-center gap-2 mt-0.5">
-                          <FaBookOpen className="text-gray-600 text-[10px]" />
-                          <span className="text-gray-500 text-xs font-mono">{item.institution}</span>
+                          <FaBookOpen className="text-gray-400 text-[10px]" aria-hidden="true" />
+                          <span className="text-gray-400 text-xs font-mono">{item.institution}</span>
                         </div>
                       </div>
                     </div>
@@ -148,20 +131,20 @@ export default function Education() {
                       <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono border ${colorClass}`}>
                         {label}
                       </span>
-                      <span className="text-gray-600 text-xs font-mono">{item.year}</span>
+                      <span className="text-gray-400 text-xs font-mono">{item.year}</span>
                     </div>
                   </div>
 
-                  <p className="text-gray-400 text-sm leading-relaxed mb-3 ml-12">
+                  <p className="text-gray-300 text-sm leading-relaxed mb-3 sm:ml-12">
                     {item.description}
                   </p>
 
                   {item.tags && (
-                    <div className="flex flex-wrap gap-1.5 ml-12">
+                    <div className="flex flex-wrap gap-1.5 sm:ml-12">
                       {item.tags.map(tag => (
                         <span
                           key={tag}
-                          className="px-2 py-0.5 text-[10px] font-mono rounded-full bg-[#0a0a14] text-gray-500 border border-[#1a1a2e]"
+                          className="px-2 py-0.5 text-[10px] font-mono rounded-full bg-[#0a0a14] text-gray-400 border border-[#1a1a2e]"
                         >
                           {tag}
                         </span>
@@ -183,8 +166,8 @@ export default function Education() {
         transition={{ delay: 0.5 }}
         className="mt-8 p-4 rounded-xl border border-cyan-accent/15 bg-cyan-accent/5 text-center"
       >
-        <p className="text-gray-400 text-sm">
-          <span className="text-cyan-accent font-mono">→</span> Actualmente aprendiendo:{' '}
+        <p className="text-gray-300 text-sm">
+          <span className="text-cyan-accent font-mono" aria-hidden="true">→</span> Actualmente aprendiendo:{' '}
           <span className="text-cyan-accent font-semibold">Arquitecturas de Agentes IA · RAG · LangChain</span>
         </p>
       </motion.div>

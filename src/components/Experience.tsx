@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
 import { FaCode, FaRocket, FaUsers, FaStar } from 'react-icons/fa'
 
-// Mi experiencia real - proyectos freelance y personales
-// La mayoría son clientes directos, no agencias
+// Mi experiencia: productos propios, construidos enteros y publicados.
+// Todavía sin clientes; lo que hay aquí se puede abrir y revisar.
 
 interface ExpItem {
   role: string
@@ -16,46 +16,46 @@ interface ExpItem {
 
 const experiences: ExpItem[] = [
   {
-    role: 'Full Stack Developer – Freelance',
-    company: 'Clientes directos / Proyectos independientes',
-    period: 'Ene 2024 – Presente',
-    type: 'freelance',
+    role: 'PrimeHub – Tienda online con panel de administración',
+    company: 'Proyecto propio, e-commerce completo',
+    period: 'Mar 2026 – Jun 2026',
+    type: 'personal',
     description:
-      'Desarrollo de aplicaciones web a medida para clientes que me contactaron principalmente a través de LinkedIn y referencias. Me enfoco en entregar productos funcionales, responsivos y con buen rendimiento.',
+      'Una tienda con reparto para Montevideo, construida entera: catálogo, carrito, checkout con dirección y método de pago, y un panel aparte para empleados y administración. Tres áreas separadas, cada una protegida por sesión y rol.',
     achievements: [
-      'Chatbots con IA integrada para automatizar atención al cliente',
-      'Landing pages y tiendas con tasas de conversión medibles',
-      'Integraciones con APIs externas (pagos, notificaciones, CRMs)',
+      'Tres roles con permisos distintos: cliente, empleado y administración',
+      'Funciona con datos locales y escala a Netlify Blobs o Supabase sin tocar el código',
+      'React Router 7 sobre un servidor Hono, desplegado en Netlify',
     ],
-    tech: ['React', 'TypeScript', 'Node.js', 'Supabase', 'Tailwind CSS'],
+    tech: ['React 19', 'React Router 7', 'Hono', 'Tailwind CSS', 'Netlify'],
   },
   {
-    role: 'Creador – Chatbot Vortex',
-    company: 'Proyecto Personal',
+    role: 'NEXUS – Agente que ejecuta el código que escribe',
+    company: 'Proyecto propio',
+    period: '2026 – Presente',
+    type: 'personal',
+    description:
+      'Un espacio de trabajo donde el agente planifica, corre el código en un sandbox de E2B y devuelve los archivos que genera. Lo que más trabajo dio fue el loop del agente: decidir cuándo tiene que parar y cómo recuperar lo que produce dentro del contenedor.',
+    achievements: [
+      'Orquestación entre varios modelos a través de OpenRouter',
+      'Ejecución aislada en sandbox cloud y descarga de los artefactos generados',
+      'Interfaz que muestra el plan y el razonamiento paso a paso',
+    ],
+    tech: ['Next.js', 'TypeScript', 'E2B Sandbox', 'OpenRouter'],
+  },
+  {
+    role: 'Chatbot Vortex – Cliente multiproveedor de IA',
+    company: 'Proyecto propio, con demo pública',
     period: 'Sep 2024 – Presente',
     type: 'personal',
     description:
-      'Diseñé y construí desde cero un chatbot multimodal que combina Gemini AI y GPT. El mayor reto fue manejar el contexto de conversaciones largas y el análisis de PDFs en tiempo real. Actualmente está en uso por usuarios beta.',
+      'Un chatbot multimodal sobre Gemini y GPT, hecho desde cero. El problema de fondo fue el contexto: cuánto historial mandar en cada turno sin disparar el coste, y qué recortar cuando la conversación se alarga.',
     achievements: [
-      'Soporte para PDFs, imágenes y texto en una sola interfaz',
-      'Sistema de contexto persistente entre sesiones',
-      'Desplegado en Netlify con CI/CD automático',
+      'PDFs, imágenes y texto en una sola interfaz',
+      'Modo local y BYOK: cada quien usa su propia clave',
+      'Historial y exportación de conversaciones, desplegado en Netlify',
     ],
-    tech: ['React', 'Gemini AI', 'GPT-4', 'PDF.js', 'Netlify'],
-  },
-  {
-    role: 'Desarrollador de Herramientas Web',
-    company: 'Colaboraciones Open Source',
-    period: '2023 – Presente',
-    type: 'colaboracion',
-    description:
-      'Participé en pequeñas colaboraciones y aporté mejoras a proyectos de la comunidad. Me gusta revisar código ajeno porque siempre se aprende algo nuevo.',
-    achievements: [
-      'Corrección de bugs y mejoras de rendimiento',
-      'Documentación y README de proyectos',
-      'Code reviews en proyectos de compañeros',
-    ],
-    tech: ['Git', 'GitHub', 'TypeScript', 'React'],
+    tech: ['React', 'Gemini API', 'OpenAI API', 'PDF.js', 'Netlify'],
   },
 ]
 
@@ -91,7 +91,7 @@ export default function Experience() {
               </div>
               <div>
                 <h3 className="text-white font-semibold text-sm">{exp.role}</h3>
-                <p className="text-gray-500 text-xs font-mono mt-0.5">{exp.company}</p>
+                <p className="text-gray-400 text-xs font-mono mt-0.5">{exp.company}</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -100,17 +100,17 @@ export default function Experience() {
               >
                 {typeConfig[exp.type].label}
               </span>
-              <span className="text-gray-600 text-xs font-mono">{exp.period}</span>
+              <span className="text-gray-400 text-xs font-mono">{exp.period}</span>
             </div>
           </div>
 
           {/* Descripción */}
-          <p className="text-gray-400 text-sm leading-relaxed mb-4">{exp.description}</p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-4">{exp.description}</p>
 
           {/* Logros */}
           <ul className="space-y-1.5 mb-4">
             {exp.achievements.map((a, j) => (
-              <li key={j} className="flex items-start gap-2 text-sm text-gray-400">
+              <li key={j} className="flex items-start gap-2 text-sm text-gray-300">
                 <FaStar className="text-cyan-accent/60 text-[10px] mt-1.5 flex-shrink-0" />
                 {a}
               </li>

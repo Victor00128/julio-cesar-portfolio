@@ -15,7 +15,9 @@ interface Project {
   demo?: string
   gradient: string
   featured?: boolean
-  status: 'live' | 'development' | 'completed'
+  // 'live' solo si hay demo pública que se pueda abrir. Si únicamente está el
+  // código, es 'code': decir LIVE sin enlace a nada es una promesa que no cumple.
+  status: 'live' | 'development' | 'completed' | 'code'
 }
 
 const projects: Project[] = [
@@ -24,24 +26,24 @@ const projects: Project[] = [
     description:
       'Workspace de IA multi-modelo con un agente autónomo: planifica, ejecuta código en un sandbox cloud real y construye archivos por ti. Orquestación multi-modelo (RACE/SYNTHESIS), análisis de archivos y UI de razonamiento estilo Claude.',
     story:
-      'Lo construí para ir más allá del chat: que la IA realmente *haga* el trabajo, no solo que responda. El mayor reto fue el loop del agente sobre el sandbox E2B y capturar los archivos que genera como artefactos descargables.',
+      'Quería un chat que ejecutara el trabajo en vez de describirlo. Lo que más me costó fue el loop del agente contra el sandbox de E2B: saber cuándo parar, y recuperar los archivos que genera dentro del contenedor para poder descargarlos.',
     icon: <FaBrain className="text-5xl sm:text-7xl" />,
-    image: '/projects/nexus.png',
+    image: '/projects/nexus.webp',
     tags: ['Next.js', 'TypeScript', 'AI Agents', 'E2B Sandbox', 'OpenRouter', 'Tailwind'],
     github: 'https://github.com/Victor00128/NEXUS',
     gradient: 'from-[#0a1628] to-[#0a0a14]',
     featured: true,
-    status: 'live',
+    status: 'code',
   },
   {
     title: 'Chatbot Vortex',
     description:
       'Chatbot multimodal que integra Gemini AI y GPT con análisis de PDFs e imágenes. Conversación contextual multi-turno y múltiples formatos de entrada.',
     story:
-      'Lo empecé porque quería entender de verdad cómo funcionan los LLMs, no solo usar las APIs. El mayor reto fue el manejo del contexto entre turnos y hacer que el análisis de PDFs fuera rápido.',
+      'Lo empecé para aprender qué pasa entre una API de LLM y la pantalla. El problema real fue el contexto entre turnos: cuánto historial mandar sin disparar los tokens, y qué recortar cuando la conversación se alarga.',
     icon: <FaRobot className="text-5xl sm:text-7xl" />,
-    image: '/projects/vortex.png',
-    tags: ['React', 'Gemini AI', 'GPT-4', 'PDF Analysis', 'TypeScript', 'Netlify'],
+    image: '/projects/vortex.webp',
+    tags: ['React', 'Gemini API', 'OpenAI API', 'PDF Analysis', 'TypeScript', 'Netlify'],
     github: 'https://github.com/Victor00128/Chatbot-Vortex',
     demo: 'https://vortex-ia.netlify.app/',
     gradient: 'from-[#0a1628] to-[#0a0a14]',
@@ -52,9 +54,9 @@ const projects: Project[] = [
     description:
       'IDE en el navegador con IA integrada, gestión de archivos, terminal real y vista previa auto-recuperable. Inspirado en VS Code.',
     story:
-      'Empezó como una herramienta personal para probar snippets rápido. Después le fui agregando funciones hasta que se convirtió en un mini-IDE con IA.',
+      'Empezó como una herramienta para probar snippets sin abrir el editor. Le fui agregando cosas hasta que terminó siendo un IDE pequeño con terminal y preview.',
     icon: <FaCode className="text-5xl sm:text-7xl" />,
-    image: '/projects/zenith.png',
+    image: '/projects/zenith.webp',
     tags: ['TypeScript', 'React', 'AI', 'Monaco Editor'],
     github: 'https://github.com/Victor00128/EDITOR-CODE',
     gradient: 'from-[#0a2818] to-[#0a0a14]',
@@ -65,7 +67,7 @@ const projects: Project[] = [
     description:
       'Juego de persecución policial con sistema de estrellas estilo GTA. Canvas 2D con física de colisiones y niveles progresivos de dificultad.',
     story:
-      'Lo hice para practicar Canvas API. Nunca había hecho un juego antes, así que fue un experimento puro — mucho debugging de colisiones a las 3am.',
+      'Lo hice para practicar Canvas. Era mi primer juego y se me fue casi todo el tiempo en las colisiones: los coches se atravesaban entre sí o se quedaban trabados contra el borde.',
     icon: <FaCarSide className="text-5xl sm:text-7xl" />,
     tags: ['TypeScript', 'React', 'Canvas 2D', 'Game Dev'],
     github: 'https://github.com/Victor00128/Escape-Driver',
@@ -75,9 +77,10 @@ const projects: Project[] = [
 ]
 
 const statusConfig = {
-  live: { label: 'LIVE', color: 'text-green-400', bg: 'bg-green-400' },
+  live: { label: 'DEMO EN VIVO', color: 'text-green-400', bg: 'bg-green-400' },
+  code: { label: 'CÓDIGO DISPONIBLE', color: 'text-cyan-accent', bg: 'bg-cyan-accent' },
   development: { label: 'EN DESARROLLO', color: 'text-yellow-400', bg: 'bg-yellow-400' },
-  completed: { label: 'COMPLETADO', color: 'text-gray-400', bg: 'bg-gray-400' },
+  completed: { label: 'COMPLETADO', color: 'text-gray-300', bg: 'bg-gray-300' },
 }
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -172,11 +175,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         </div>
 
         {/* Descripción */}
-        <p className="text-gray-400 text-sm leading-relaxed mb-3">{project.description}</p>
+        <p className="text-gray-300 text-sm leading-relaxed mb-3">{project.description}</p>
 
         {/* Historia (toque humano) */}
         <div className="bg-[#0a0a14] border border-[#1a1a2e] rounded-lg px-3 py-2.5 mb-5">
-          <p className="text-gray-500 text-xs leading-relaxed font-mono">
+          <p className="text-gray-300 text-xs leading-relaxed font-mono">
             <span className="text-cyan-accent/60 mr-1.5">//</span>
             {project.story}
           </p>
