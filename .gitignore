@@ -4,3 +4,9 @@ dist/
 .DS_Store
 *.log
 .vscode/
+
+# Empaquetados sueltos: no tienen por qué acabar en el repo
+*.zip
+
+# La foto del CV es personal; el script la usa desde aquí sin publicarla
+assets/foto.*

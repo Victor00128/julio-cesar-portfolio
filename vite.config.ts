@@ -9,25 +9,28 @@ const __dirname = path.dirname(__filename);
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-    // viteSingleFile() - Comentado para producción normal
-    // Usar solo si necesitás un único archivo HTML
-  ],
+  plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
   },
   build: {
-    // Code splitting automático para mejor performance
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          motion: ['framer-motion'],
-          icons: ['react-icons'],
+        // Por id, no por nombre de paquete: la forma anterior
+        // ({ vendor: ['react', 'react-dom'] }) dejaba vendor en 4 KB y metía
+        // React DOM entero en el bundle principal, porque los imports reales
+        // son 'react-dom/client' y 'react-icons/fa', que no coinciden.
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return
+          if (id.includes('framer-motion') || id.includes('/motion-dom/') || id.includes('/motion-utils/')) {
+            return 'motion'
+          }
+          if (id.includes('react-icons')) return 'icons'
+          if (id.includes('/react-dom/') || id.includes('/react/') || id.includes('/scheduler/')) {
+            return 'react'
+          }
         },
       },
     },
@@ -35,8 +38,6 @@ export default defineConfig({
     sourcemap: false,
     // Minificación
     minify: 'esbuild',
-    // Target moderno
-    target: 'esnext',
   },
   // Optimizaciones para desarrollo
   esbuild: {
