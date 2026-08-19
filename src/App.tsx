@@ -318,7 +318,7 @@ export default function App() {
                   con un enfoque especial en integrar{' '}
                   <span className="text-cyan-accent font-semibold">Inteligencia Artificial</span>{' '}
                   en productos reales. Construí{' '}
-                  <a href="https://vortex-ia.netlify.app/" target="_blank" rel="noopener noreferrer"
+                  <a href="https://chatbot-vortex.vercel.app/" target="_blank" rel="noopener noreferrer"
                     className="text-cyan-accent hover:underline">
                     Chatbot Vortex
                   </a>{' '}

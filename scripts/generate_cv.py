@@ -109,11 +109,11 @@ PROJECTS = [
         "bullets": [
             "PDFs, imágenes y texto en una sola interfaz, con conversación multi-turno.",
             "Manejo del contexto entre turnos: cuánto historial enviar y qué recortar al alargarse.",
-            "Modo local y BYOK; despliegue continuo en Netlify.",
+            "Modo local y BYOK; despliegue continuo desde GitHub.",
         ],
-        "tech": "React, TypeScript, Gemini API, OpenAI API, PDF.js, Netlify",
+        "tech": "React, TypeScript, Gemini API, OpenAI API, PDF.js, Vercel",
         "links": [
-            ("Demo", "https://vortex-ia.netlify.app/"),
+            ("Demo", "https://chatbot-vortex.vercel.app/"),
             ("Repo", "https://github.com/Victor00128/Chatbot-Vortex"),
         ],
     },
