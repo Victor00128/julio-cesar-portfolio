@@ -22,24 +22,30 @@
     <meta property="og:url" content="https://julio-cesar-morales.netlify.app/" />
     <meta property="og:title" content="Julio Cesar | React &amp; TypeScript Developer" />
     <meta property="og:description" content="Programo aplicaciones web con React y TypeScript, e integro APIs de modelos de lenguaje dentro de ellas. Disponible para proyectos freelance." />
-    <meta property="og:image" content="https://github.com/Victor00128.png" />
-    <meta property="og:image:width" content="400" />
-    <meta property="og:image:height" content="400" />
+    <meta property="og:image" content="https://julio-cesar-morales.netlify.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Julio Cesar Morales — Desarrollador web. React, TypeScript e integración de IA." />
     <meta property="og:locale" content="es_UY" />
     <meta property="og:site_name" content="Portafolio - Julio Cesar" />
 
     <!-- ============================================
          Twitter Card
     ============================================ -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Julio Cesar | React &amp; TypeScript Developer" />
     <meta name="twitter:description" content="Programo aplicaciones web con React y TypeScript e integro APIs de LLM. Disponible para freelance y colaboraciones." />
-    <meta name="twitter:image" content="https://github.com/Victor00128.png" />
+    <meta name="twitter:image" content="https://julio-cesar-morales.netlify.app/og-image.png" />
+    <meta name="twitter:image:alt" content="Julio Cesar Morales — Desarrollador web. React, TypeScript e integración de IA." />
 
     <!-- ============================================
          Favicon SVG inline (iniciales JC)
     ============================================ -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0a0f'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='monospace' font-size='13' font-weight='bold' fill='%2300C9FF'%3EJC%3C/text%3E%3C/svg%3E" />
+
+    <!-- La foto del hero es lo primero que se pinta: se precarga para que no
+         espere a que el bundle de React la descubra -->
+    <link rel="preload" as="image" href="/foto-julio.webp" fetchpriority="high" />
 
     <!-- ============================================
          Google Fonts: Space Grotesk + JetBrains Mono
