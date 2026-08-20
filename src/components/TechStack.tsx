@@ -14,7 +14,6 @@ import {
   SiTypescript,
   SiSupabase,
   SiVite,
-  SiOpenai,
 } from 'react-icons/si';
 
 // Stack que uso en el día a día
@@ -41,7 +40,7 @@ const backend = [
 // Nombro las APIs, no los modelos: un modelo concreto caduca en meses
 // y deja el portfolio con pinta de viejo.
 const ai = [
-  { icon: SiOpenai, name: 'OpenAI API' },
+  { icon: OpenAIIcon, name: 'OpenAI API' },
   { icon: OpenRouterIcon, name: 'OpenRouter' },
   // Gemini va aparte porque lleva degradado propio, no currentColor
 ];
@@ -80,6 +79,27 @@ function TechCard({
         {name}
       </span>
     </motion.div>
+  );
+}
+
+// Gemini, OpenRouter y OpenAI van a mano. Los dos primeros nunca estuvieron en
+// react-icons; SiOpenai sí existía, pero lo quitaron en la 5.6.0. Como el rango
+// del package.json es ^5.5.0, cualquiera que clonara e instalara de cero se
+// llevaba la 5.7.0 y el build no compilaba, aunque con el lockfile local pasara.
+// Dibujado aquí no depende de que la librería lo mantenga.
+function OpenAIIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      width="1em"
+      height="1em"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M22.28 9.82a5.99 5.99 0 0 0-.52-4.91 6.05 6.05 0 0 0-6.51-2.9A6 6 0 0 0 4.98 4.18a5.99 5.99 0 0 0-4 2.9 6.05 6.05 0 0 0 .74 7.1 5.98 5.98 0 0 0 .51 4.91 6.05 6.05 0 0 0 6.52 2.9A5.98 5.98 0 0 0 13.26 24a6.06 6.06 0 0 0 5.77-4.21 5.99 5.99 0 0 0 4-2.9 6.06 6.06 0 0 0-.75-7.07Zm-9.02 12.6a4.48 4.48 0 0 1-2.88-1.04l.14-.08 4.78-2.76a.79.79 0 0 0 .39-.68v-6.74l2.02 1.17a.07.07 0 0 1 .04.06v5.58a4.5 4.5 0 0 1-4.5 4.49ZM3.6 18.3a4.47 4.47 0 0 1-.54-3.01l.14.09 4.79 2.76a.77.77 0 0 0 .78 0l5.84-3.37v2.33a.08.08 0 0 1-.03.06L9.74 19.95a4.5 4.5 0 0 1-6.14-1.65ZM2.34 7.9a4.49 4.49 0 0 1 2.35-1.97V11.6a.77.77 0 0 0 .38.67l5.82 3.36-2.02 1.17a.08.08 0 0 1-.07 0l-4.84-2.79A4.5 4.5 0 0 1 2.34 7.9Zm16.61 3.87-5.84-3.4L15.13 7.2a.08.08 0 0 1 .07 0l4.84 2.8a4.49 4.49 0 0 1-.68 8.1v-5.66a.79.79 0 0 0-.4-.67Zm2.01-3.03-.14-.08-4.79-2.79a.78.78 0 0 0-.79 0L9.4 9.23V6.9a.07.07 0 0 1 .03-.06l4.84-2.79a4.5 4.5 0 0 1 6.68 4.66ZM8.3 12.86l-2.02-1.16a.08.08 0 0 1-.04-.06V6.07a4.5 4.5 0 0 1 7.37-3.45l-.14.08L8.69 5.46a.79.79 0 0 0-.39.68v6.72Zm1.1-2.36 2.6-1.5 2.6 1.5v3l-2.6 1.5-2.6-1.5v-3Z" />
+    </svg>
   );
 }
 
