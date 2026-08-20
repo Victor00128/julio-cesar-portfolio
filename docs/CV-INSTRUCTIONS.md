@@ -1,35 +1,44 @@
-# Instrucciones para el CV
+# El CV
 
-## Opcion 1: usar el PDF existente
+El PDF de `public/CV-Julio-Cesar.pdf` no se edita a mano: lo genera
+`scripts/generate_cv.py`. Así el CV y la web nunca dicen cosas distintas.
 
-Si ya tienes tu CV en PDF:
-
-1. Guardalo como `CV-Julio-Cesar.pdf`.
-2. Colocalo en la carpeta `public/`.
-3. El boton "Descargar CV" funcionara automaticamente.
-
-## Opcion 2: generar el CV desde el portafolio
-
-Si aun no tienes CV, puedes usar esta estructura:
-
-```text
-CV-Julio-Cesar.pdf
-├── Header
-│   ├── Julio Cesar Morales
-│   ├── Product Engineer
-│   ├── Email: juliocesarmoralesalvarado9@gmail.com
-│   ├── LinkedIn: linkedin.com/in/julio-cesar-406314373/
-│   └── GitHub: github.com/Victor00128
-├── Perfil profesional
-├── Habilidades tecnicas
-├── Experiencia
-├── Proyectos destacados
-└── Educacion
+```bash
+pip install reportlab
+npm run cv
 ```
 
-## Sugerencias
+## Qué hay que tocar para cambiarlo
 
-- Mantenlo en una pagina si tienes poca experiencia.
-- Usa verbos de accion y resultados medibles.
-- Exportalo siempre en PDF.
-- Usa un nombre de archivo consistente.
+Todo el contenido vive en las constantes de la cabecera del script:
+
+| Constante    | Qué controla                                     |
+| ------------ | ------------------------------------------------ |
+| `NAME`       | Nombre del encabezado                            |
+| `TITLE`      | Línea de rol bajo el nombre                      |
+| `SUMMARY`    | Párrafo de perfil                                |
+| `HIGHLIGHTS` | Los tres números grandes                         |
+| `SKILLS`     | Chips de la barra lateral, por categoría         |
+| `PROJECTS`   | Bloques de proyecto con bullets, stack y enlaces |
+| `EDUCATION`  | Formación                                        |
+
+El diseño (dos columnas, colores, tipografías) está más abajo, en la paleta y
+en los `ParagraphStyle`.
+
+## La foto
+
+Deja un retrato **cuadrado** en `assets/foto.jpg` y el script lo recorta en
+círculo solo. Esa carpeta está en `.gitignore`, así que el archivo no se sube;
+la foto sí queda embebida dentro del PDF, que sí se publica.
+
+Sin foto no falla: dibuja las iniciales y sigue saliendo bien.
+
+## Reglas que conviene no romper
+
+- **Una sola página.** Si añades cosas y se desborda, recorta antes de aceptar
+  la segunda página.
+- **Nada que no se pueda comprobar.** Los números de `HIGHLIGHTS` tienen que
+  cuadrar con lo que hay en GitHub. Si un proyecto pasa a privado, deja de
+  contarlo.
+- **Sin enlaces a repos privados.** Un botón "Repo" que no abre nada es peor
+  que no ponerlo.

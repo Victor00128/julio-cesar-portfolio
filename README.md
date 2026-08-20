@@ -28,7 +28,7 @@ Personal portfolio built with **React 19 + TypeScript + Vite + Tailwind CSS v4**
 | Styling    | Tailwind CSS 4 |
 | Animations | Framer Motion  |
 | Icons      | React Icons    |
-| Deploy     | Netlify        |
+| Deploy     | Vercel         |
 
 ## Getting started
 
@@ -49,6 +49,7 @@ The dev server runs at `http://localhost:5173`.
 | `npm run build`     | Production build into `dist/`                         |
 | `npm run preview`   | Serve the production build locally                    |
 | `npm run typecheck` | `tsc --noEmit` — `vite build` does **not** check types |
+| `npm run lint`      | ESLint over `src/` and the config files               |
 | `npm run stats`     | Regenerate `public/github-stats.json`                 |
 | `npm run cv`        | Regenerate `public/CV-Julio-Cesar.pdf`                |
 
@@ -92,9 +93,11 @@ cp .env.example .env
 
 ## Deploy
 
-**Netlify** — build command `npm run build`, publish directory `dist`.
+Deployed on **Vercel**, which builds from `main` on every push. Framework is
+auto-detected (Vite); `vercel.json` only adds cache headers — assets are
+content-hashed and immutable, images and stats get shorter TTLs.
 
-**Vercel** — run `vercel` and follow the CLI.
+To deploy a fork: import the repo at vercel.com, or run `vercel` from the CLI.
 
 ## Project structure
 

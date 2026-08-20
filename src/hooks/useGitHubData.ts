@@ -96,8 +96,8 @@ export function useGitHubData() {
       const data = await fetchStats(skipCache)
       writeCache(data)
       setStats(data)
-    } catch (err: any) {
-      setError(err.message || 'Error al cargar datos')
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Error al cargar datos')
       // Mostrar datos viejos antes de nada
       const stale = readStaleCache()
       if (stale) setStats(stale)

@@ -22,8 +22,10 @@ function useIsLowEndDevice() {
 
   useEffect(() => {
     // Si deviceMemory está disponible y es <= 4, consideramos low-end
+    // deviceMemory no está en los tipos estándar: solo lo trae Chromium
     if ('deviceMemory' in navigator) {
-      setIsLowEnd((navigator as any).deviceMemory <= 4);
+      const memoria = (navigator as Navigator & { deviceMemory?: number }).deviceMemory;
+      setIsLowEnd(memoria !== undefined && memoria <= 4);
     }
     // Fallback: si es móvil, asumimos precaución
     else if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {

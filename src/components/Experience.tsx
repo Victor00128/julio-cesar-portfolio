@@ -24,10 +24,10 @@ const experiences: ExpItem[] = [
       'Una tienda con reparto para Montevideo, construida entera: catálogo, carrito, checkout con dirección y método de pago, y un panel aparte para empleados y administración. Tres áreas separadas, cada una protegida por sesión y rol.',
     achievements: [
       'Tres roles con permisos distintos: cliente, empleado y administración',
-      'Funciona con datos locales y escala a Netlify Blobs o Supabase sin tocar el código',
-      'React Router 7 sobre un servidor Hono, desplegado en Netlify',
+      'Funciona con datos locales y escala a un almacenamiento externo sin tocar el código',
+      'React Router 7 sobre un servidor Hono',
     ],
-    tech: ['React 19', 'React Router 7', 'Hono', 'Tailwind CSS', 'Netlify'],
+    tech: ['React 19', 'React Router 7', 'Hono', 'Tailwind CSS'],
   },
   {
     role: 'NEXUS – Agente que ejecuta el código que escribe',
@@ -53,9 +53,9 @@ const experiences: ExpItem[] = [
     achievements: [
       'PDFs, imágenes y texto en una sola interfaz',
       'Modo local y BYOK: cada quien usa su propia clave',
-      'Historial y exportación de conversaciones, desplegado en Netlify',
+      'Historial y exportación de conversaciones, con despliegue continuo',
     ],
-    tech: ['React', 'Gemini API', 'OpenAI API', 'PDF.js', 'Netlify'],
+    tech: ['React', 'Gemini API', 'OpenAI API', 'PDF.js', 'Vercel'],
   },
 ]
 

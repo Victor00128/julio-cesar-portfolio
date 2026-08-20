@@ -64,17 +64,18 @@ SKILLS = {
     "Frontend": ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Vite", "Next.js"],
     "Backend": ["Node.js", "Hono", "REST APIs", "Sesiones y roles", "Supabase"],
     "IA": ["Gemini API", "OpenAI API", "OpenRouter", "Sandbox E2B"],
-    "Herramientas": ["Git", "GitHub", "Vercel", "Netlify", "Despliegue continuo"],
+    "Herramientas": ["Git", "GitHub", "Vercel", "Despliegue continuo"],
 }
 
 LANGUAGES = [("Español", "Nativo"), ("Inglés", "Técnico")]
 
 # Tres datos concretos para leer de un vistazo. Solo cosas comprobables:
-# si alguien abre el GitHub, cuadra.
+# si alguien abre el GitHub, cuadra. Antes ponia "100% del codigo publicado",
+# que era falso: PrimeHub es un repo privado.
 HIGHLIGHTS = [
     ("3", "productos propios\nconstruidos enteros"),
     ("4", "años\nprogramando"),
-    ("100%", "del código\npublicado en GitHub"),
+    ("6", "repos públicos\nen GitHub"),
 ]
 
 PROJECTS = [
@@ -85,10 +86,12 @@ PROJECTS = [
         "bullets": [
             "Catálogo, carrito y checkout con dirección y método de pago.",
             "Tres áreas separadas por sesión y rol: cliente, empleado y administración.",
-            "Arranca con datos locales y escala a Netlify Blobs o Supabase sin tocar el código.",
+            "Arranca con datos locales y escala a un almacenamiento externo sin tocar el código.",
         ],
-        "tech": "React 19, React Router 7, Hono, Tailwind CSS, Netlify",
-        "links": [("Repo", "https://github.com/Victor00128")],
+        "tech": "React 19, React Router 7, Hono, Tailwind CSS",
+        # Sin enlace: el repo es privado. Un boton "Repo" que lleva al perfil
+        # promete codigo que no se puede abrir.
+        "links": [],
     },
     {
         "role": "NEXUS – Agente que ejecuta el código que escribe",
