@@ -55,9 +55,9 @@ AVAILABILITY = "Disponible · remoto"
 
 SUMMARY = (
     "Desarrollador web con React y TypeScript. Construyo aplicaciones completas por mi cuenta, "
-    "de la primera línea al despliegue, y publico el código para que se pueda revisar: una tienda "
-    "con checkout y panel por roles, un agente que ejecuta código en un sandbox y un cliente de chat "
-    "multiproveedor. Cuando el proyecto lo pide, integro APIs de modelos de lenguaje dentro del producto."
+    "de la primera línea al despliegue, y publico el código para que se pueda revisar: un agente que "
+    "ejecuta código en un sandbox y un cliente de chat multiproveedor. Cuando el proyecto lo pide, "
+    "integro APIs de modelos de lenguaje dentro del producto."
 )
 
 SKILLS = {
@@ -70,29 +70,14 @@ SKILLS = {
 LANGUAGES = [("Español", "Nativo"), ("Inglés", "Técnico")]
 
 # Tres datos concretos para leer de un vistazo. Solo cosas comprobables:
-# si alguien abre el GitHub, cuadra. Antes ponia "100% del codigo publicado",
-# que era falso: PrimeHub es un repo privado.
+# si alguien abre el GitHub, cuadra.
 HIGHLIGHTS = [
-    ("3", "productos propios\nconstruidos enteros"),
+    ("2", "productos propios\nconstruidos enteros"),
     ("4", "años\nprogramando"),
     ("6", "repos públicos\nen GitHub"),
 ]
 
 PROJECTS = [
-    {
-        "role": "PrimeHub – Tienda online con panel de administración",
-        "org": "Proyecto propio",
-        "period": "Mar 2026 – Jun 2026",
-        "bullets": [
-            "Catálogo, carrito y checkout con dirección y método de pago.",
-            "Tres áreas separadas por sesión y rol: cliente, empleado y administración.",
-            "Arranca con datos locales y escala a un almacenamiento externo sin tocar el código.",
-        ],
-        "tech": "React 19, React Router 7, Hono, Tailwind CSS",
-        # Sin enlace: el repo es privado. Un boton "Repo" que lleva al perfil
-        # promete codigo que no se puede abrir.
-        "links": [],
-    },
     {
         "role": "NEXUS – Agente que ejecuta el código que escribe",
         "org": "Proyecto propio",

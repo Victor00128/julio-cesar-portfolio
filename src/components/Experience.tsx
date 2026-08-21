@@ -13,18 +13,6 @@ interface CaseStudy {
 
 const cases: CaseStudy[] = [
   {
-    title: 'PrimeHub',
-    context: 'E-commerce full stack · 2026',
-    problem:
-      'Resolver en un solo producto el recorrido de compra y la operación interna de una tienda con reparto.',
-    decisions: [
-      'Separar cliente, empleado y administración con sesiones y permisos por rol.',
-      'Mantener una capa de datos intercambiable entre JSON local, Netlify Blobs y Supabase.',
-    ],
-    result:
-      'Catálogo, carrito, checkout, pedidos, stock, reparto y panel administrativo conectados sobre React Router 7 y Hono.',
-  },
-  {
     title: 'NEXUS',
     context: 'Agente autónomo · 2026–presente',
     problem:
@@ -58,11 +46,11 @@ export default function Experience() {
   return (
     <div className="mx-auto w-full max-w-5xl">
       <p className="mx-auto mb-8 max-w-2xl text-center text-sm leading-relaxed text-gray-300 sm:text-base">
-        El foco aquí no es repetir las funciones de cada producto, sino mostrar cómo abordé tres
+        El foco aquí no es repetir las funciones de cada producto, sino mostrar cómo abordé
         problemas técnicos distintos.
       </p>
 
-      <div className="grid gap-5 lg:grid-cols-3">
+      <div className="grid gap-5 lg:grid-cols-2">
         {cases.map((item, index) => (
           <motion.article
             key={item.title}

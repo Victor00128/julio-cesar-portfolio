@@ -48,10 +48,6 @@ const ai = [
 
 const evidence = [
   {
-    product: 'PrimeHub',
-    detail: 'Roles y permisos, carrito, checkout, pedidos, reparto y panel administrativo.',
-  },
-  {
     product: 'NEXUS',
     detail: 'Agentes multi-modelo, ejecución aislada en E2B y recuperación de archivos.',
   },
@@ -258,7 +254,7 @@ export default function TechStack() {
           </p>
           <h3 className="mt-1 text-lg font-bold text-white">Dónde apliqué este stack</h3>
         </div>
-        <ul className="grid gap-3 md:grid-cols-3">
+        <ul className="grid gap-3 md:grid-cols-2">
           {evidence.map(item => (
             <li key={item.product} className="flex items-start gap-3 rounded-xl border border-dark-border bg-dark-card p-4">
               <FaCheckCircle className="mt-0.5 shrink-0 text-cyan-accent" aria-hidden="true" />
