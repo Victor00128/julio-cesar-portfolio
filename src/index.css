@@ -211,3 +211,58 @@ button:disabled:active {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* ===== Pulido visual profesional ===== */
+/* Más contraste sin abandonar la estética oscura del producto. */
+#hero h1 {
+  max-width: 18ch;
+  margin-inline: auto;
+  text-wrap: balance;
+}
+
+#hero p:not(.font-mono) {
+  color: #dbe5f2;
+  text-wrap: pretty;
+}
+
+#hero .text-gray-400, #hero .text-gray-500, #projects .text-gray-400, #projects .text-gray-500, #experience .text-gray-400, #experience .text-gray-500 {
+  color: #aab6c9;
+}
+
+#projects article, #experience article {
+  scroll-margin-top: 6rem;
+}
+
+#projects article p, #experience article p {
+  text-wrap: pretty;
+}
+
+#projects article li, #experience article li {
+  color: #cbd5e1;
+  line-height: 1.55;
+}
+
+#projects article .text-xs, #experience article .text-xs {
+  letter-spacing: 0.02em;
+}
+
+#projects article a, #experience article a {
+  min-height: 2.5rem;
+}
+
+@media (max-width: 640px) {
+  #hero h1 {
+    font-size: clamp(2.25rem, 10vw, 3.75rem);
+    line-height: 1.08;
+  }
+
+  #hero p:not(.font-mono) {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  #projects article, #experience article {
+    padding: 1.125rem;
+  }
+}

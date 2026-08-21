@@ -127,3 +127,8 @@ public/
 ## License
 
 MIT. See [LICENSE](./LICENSE).
+
+
+## Agregar un proyecto
+
+Los proyectos se gestionan desde `src/data/projects.tsx`. Para incorporar uno nuevo, agrega un objeto al arreglo `projects` con `title`, `summary`, `problem`, `built`, `technical`, `result`, `icon`, `image`, `tags`, `github` y `status`; `demo` es opcional. Coloca la imagen en `public/projects/`, define `featured: true` solo para el proyecto principal y conserva `status` como `live`, `development`, `completed` o `code`. El componente visual se actualiza automáticamente sin modificar su estructura.
