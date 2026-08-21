@@ -11,15 +11,35 @@ import Education from './components/Education'
 import Experience from './components/Experience'
 import { FaTerminal, FaDownload, FaBriefcase, FaGithub, FaLinkedin, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa'
 
-// Navegación — primero la evidencia de producto y después el contexto personal.
+// Navegación — primero la oferta y la evidencia; después, el contexto personal.
 const nav = [
+  { label: 'Servicios', href: '#services', primary: true },
   { label: 'Proyectos', href: '#projects', primary: true },
   { label: 'Casos', href: '#experience', primary: true },
-  { label: 'Tech', href: '#tech', primary: true },
+  { label: 'Tech', href: '#tech', primary: false },
   { label: 'Sobre Mí', href: '#about', primary: false },
   { label: 'Educación', href: '#education', primary: false },
   { label: 'Actividad', href: '#stats', primary: false },
   { label: 'Contacto', href: '#contact', primary: true },
+]
+
+const services = [
+  {
+    title: 'Aplicaciones React + TypeScript',
+    description: 'Interfaces responsivas, formularios, validación y estados de carga, error y éxito preparados para despliegue.',
+  },
+  {
+    title: 'Integración de IA',
+    description: 'Chat, archivos, streaming e historial mediante backend o BYOK, según las restricciones de cada proveedor.',
+  },
+  {
+    title: 'Dashboards y herramientas internas',
+    description: 'Pantallas operativas con datos, filtros y estados claros para que un equipo pueda decidir y actuar.',
+  },
+  {
+    title: 'Estabilización de frontend y APIs',
+    description: 'Corrección de builds, tipos, errores de integración y pruebas enfocadas para recuperar una entrega.',
+  },
 ]
 
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
@@ -299,7 +319,24 @@ export default function App() {
           </motion.div>
         </section>
 
-        {/* ===== Proyectos: la evidencia principal aparece inmediatamente después del hero ===== */}
+        {/* ===== Servicios: oferta concreta antes de la evidencia ===== */}
+        <Section id="services" title="Servicios que puedo entregar">
+          <div className="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2">
+            {services.map(service => (
+              <article
+                key={service.title}
+                className="rounded-xl border border-dark-border bg-dark-card p-6 text-left glow-border"
+              >
+                <h3 className="text-lg font-semibold text-white">{service.title}</h3>
+                <p className="mt-3 leading-relaxed text-gray-300">{service.description}</p>
+              </article>
+            ))}
+          </div>
+        </Section>
+
+        <div className="gradient-line max-w-lg mx-auto" />
+
+        {/* ===== Proyectos: evidencia pública después de la oferta de servicios ===== */}
         <Section id="projects" title="Productos que he construido">
           <FeaturedProject />
         </Section>

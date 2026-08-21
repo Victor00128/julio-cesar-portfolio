@@ -16,6 +16,7 @@ Personal portfolio built with **React 19 + TypeScript + Vite + Tailwind CSS v4**
 - Technical SEO: Open Graph, Twitter cards, JSON-LD, canonical
 - GitHub stats resolved at deploy time — one static JSON, not 14 API calls per visitor
 - Contact form via Formspree, with loading/success/error states
+- Explicit freelance services for React, AI integrations, dashboards, internal tools, and frontend stabilization
 - CV generated from a script, so the PDF never drifts from the site
 
 ## Tech stack
@@ -129,6 +130,8 @@ public/
 MIT. See [LICENSE](./LICENSE).
 
 
-## Agregar un proyecto
+## Add a project
 
-Los proyectos se gestionan desde `src/data/projects.tsx`. Para incorporar uno nuevo, agrega un objeto al arreglo `projects` con `title`, `summary`, `problem`, `built`, `technical`, `result`, `icon`, `image`, `tags`, `github` y `status`; `demo` es opcional. Coloca la imagen en `public/projects/`, define `featured: true` solo para el proyecto principal y conserva `status` como `live`, `development`, `completed` o `code`. El componente visual se actualiza automáticamente sin modificar su estructura.
+Projects are managed in `src/data/projects.tsx`. Add an object to the `projects` array with `slug`, `title`, `summary`, `problem`, `built`, `technical`, `result`, `icon`, `image`, `tags`, `github`, and `status`; `demo` and `featured` are optional. Put the image in `public/projects/`, use `featured: true` only for the primary project, and keep `status` to `live`, `development`, `completed`, or `code`. The visual component updates without structural edits.
+
+Use [`docs/PROJECT-TEMPLATE.md`](./docs/PROJECT-TEMPLATE.md) to prepare the problem, solution, technical decisions, verifiable result, and visuals before publishing a project.
