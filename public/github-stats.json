@@ -3,36 +3,36 @@
   "ownRepos": 6,
   "stars": 2,
   "forks": 0,
-  "commits": 116,
+  "commits": 141,
   "followers": 0,
   "languages": [
     {
       "name": "TypeScript",
-      "bytes": 1297695,
-      "percent": 94.7,
+      "bytes": 1367158,
+      "percent": 92.9,
       "color": "#0099cc"
     },
     {
+      "name": "JavaScript",
+      "bytes": 42220,
+      "percent": 2.9,
+      "color": "#00C9FF"
+    },
+    {
       "name": "CSS",
-      "bytes": 30327,
+      "bytes": 32798,
       "percent": 2.2,
       "color": "#0077aa"
     },
     {
-      "name": "JavaScript",
-      "bytes": 24689,
-      "percent": 1.8,
-      "color": "#00C9FF"
-    },
-    {
       "name": "Python",
-      "bytes": 8208,
-      "percent": 0.6,
+      "bytes": 19887,
+      "percent": 1.4,
       "color": "#005577"
     },
     {
       "name": "HTML",
-      "bytes": 6728,
+      "bytes": 7306,
       "percent": 0.5,
       "color": "#00e5ff"
     },
@@ -50,5 +50,5 @@
     }
   ],
   "profileUrl": "https://github.com/Victor00128",
-  "updatedAt": 1787111374260
+  "updatedAt": 1787344320072
 }
