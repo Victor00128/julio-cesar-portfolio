@@ -1,135 +1,135 @@
 import { motion } from 'framer-motion'
-import { FaCode, FaRocket, FaUsers, FaStar } from 'react-icons/fa'
+import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa'
 
-// Mi experiencia: productos propios, construidos enteros y publicados.
-// Todavía sin clientes; lo que hay aquí se puede abrir y revisar.
-
-interface ExpItem {
-  role: string
-  company: string
-  period: string
-  type: 'freelance' | 'personal' | 'colaboracion'
-  description: string
-  achievements: string[]
-  tech: string[]
+interface CaseStudy {
+  title: string
+  context: string
+  problem: string
+  decisions: string[]
+  result: string
+  github?: string
+  demo?: string
 }
 
-const experiences: ExpItem[] = [
+const cases: CaseStudy[] = [
   {
-    role: 'PrimeHub – Tienda online con panel de administración',
-    company: 'Proyecto propio, e-commerce completo',
-    period: 'Mar 2026 – Jun 2026',
-    type: 'personal',
-    description:
-      'Una tienda con reparto para Montevideo, construida entera: catálogo, carrito, checkout con dirección y método de pago, y un panel aparte para empleados y administración. Tres áreas separadas, cada una protegida por sesión y rol.',
-    achievements: [
-      'Tres roles con permisos distintos: cliente, empleado y administración',
-      'Funciona con datos locales y escala a un almacenamiento externo sin tocar el código',
-      'React Router 7 sobre un servidor Hono',
+    title: 'PrimeHub',
+    context: 'E-commerce full stack · 2026',
+    problem:
+      'Resolver en un solo producto el recorrido de compra y la operación interna de una tienda con reparto.',
+    decisions: [
+      'Separar cliente, empleado y administración con sesiones y permisos por rol.',
+      'Mantener una capa de datos intercambiable entre JSON local, Netlify Blobs y Supabase.',
     ],
-    tech: ['React 19', 'React Router 7', 'Hono', 'Tailwind CSS'],
+    result:
+      'Catálogo, carrito, checkout, pedidos, stock, reparto y panel administrativo conectados sobre React Router 7 y Hono.',
   },
   {
-    role: 'NEXUS – Agente que ejecuta el código que escribe',
-    company: 'Proyecto propio',
-    period: '2026 – Presente',
-    type: 'personal',
-    description:
-      'Un espacio de trabajo donde el agente planifica, corre el código en un sandbox de E2B y devuelve los archivos que genera. Lo que más trabajo dio fue el loop del agente: decidir cuándo tiene que parar y cómo recuperar lo que produce dentro del contenedor.',
-    achievements: [
-      'Orquestación entre varios modelos a través de OpenRouter',
-      'Ejecución aislada en sandbox cloud y descarga de los artefactos generados',
-      'Interfaz que muestra el plan y el razonamiento paso a paso',
+    title: 'NEXUS',
+    context: 'Agente autónomo · 2026–presente',
+    problem:
+      'Pasar de una respuesta conversacional a un agente que haga el trabajo y entregue archivos fuera de su entorno de ejecución.',
+    decisions: [
+      'Controlar el ciclo de plan, herramienta, observación y parada desde código propio.',
+      'Aislar la ejecución en E2B y capturar los artefactos antes de cerrar el sandbox.',
     ],
-    tech: ['Next.js', 'TypeScript', 'E2B Sandbox', 'OpenRouter'],
+    result:
+      'Un flujo verificable: el usuario ve el plan, sigue las herramientas y descarga los archivos producidos por el agente.',
+    github: 'https://github.com/Victor00128/NEXUS',
+    demo: 'https://nexus-exec.vercel.app/',
   },
   {
-    role: 'Chatbot Vortex – Cliente multiproveedor de IA',
-    company: 'Proyecto propio, con demo pública',
-    period: 'Sep 2024 – Presente',
-    type: 'personal',
-    description:
-      'Un chatbot multimodal sobre Gemini y GPT, hecho desde cero. El problema de fondo fue el contexto: cuánto historial mandar en cada turno sin disparar el coste, y qué recortar cuando la conversación se alarga.',
-    achievements: [
-      'PDFs, imágenes y texto en una sola interfaz',
-      'Modo local y BYOK: cada quien usa su propia clave',
-      'Historial y exportación de conversaciones, con despliegue continuo',
+    title: 'Chatbot Vortex',
+    context: 'Cliente multimodal · 2024–presente',
+    problem:
+      'Mantener conversaciones útiles con distintos modelos y formatos sin ocultar al usuario cómo se configura cada proveedor.',
+    decisions: [
+      'Guardar historial y preferencias en el navegador, con exportación a JSON y Markdown.',
+      'Usar modo offline y BYOK para que la demo no distribuya claves preconfiguradas.',
     ],
-    tech: ['React', 'Gemini API', 'OpenAI API', 'PDF.js', 'Vercel'],
+    result:
+      'Una interfaz pública para probar texto, PDFs, imágenes y otros adjuntos con contexto, búsqueda y errores visibles.',
+    github: 'https://github.com/Victor00128/Chatbot-Vortex',
+    demo: 'https://chatbot-vortex.vercel.app/',
   },
 ]
 
-const typeConfig = {
-  freelance: { color: 'text-cyan-accent bg-cyan-accent/10 border-cyan-accent/30', label: 'Freelance' },
-  personal: { color: 'text-green-400 bg-green-400/10 border-green-400/30', label: 'Proyecto Propio' },
-  colaboracion: { color: 'text-purple-400 bg-purple-400/10 border-purple-400/30', label: 'Colaboración' },
-}
-
 export default function Experience() {
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-5">
-      {experiences.map((exp, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.12, duration: 0.5 }}
-          className="bg-dark-card border border-dark-border rounded-xl p-5 sm:p-6 hover:border-cyan-accent/25 transition-all duration-300 group"
-        >
-          {/* Header */}
-          <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-cyan-accent/10 flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-accent/20 transition-colors">
-                {exp.type === 'freelance' ? (
-                  <FaCode className="text-cyan-accent" />
-                ) : exp.type === 'personal' ? (
-                  <FaRocket className="text-green-400" />
-                ) : (
-                  <FaUsers className="text-purple-400" />
-                )}
+    <div className="mx-auto w-full max-w-5xl">
+      <p className="mx-auto mb-8 max-w-2xl text-center text-sm leading-relaxed text-gray-300 sm:text-base">
+        El foco aquí no es repetir las funciones de cada producto, sino mostrar cómo abordé tres
+        problemas técnicos distintos.
+      </p>
+
+      <div className="grid gap-5 lg:grid-cols-3">
+        {cases.map((item, index) => (
+          <motion.article
+            key={item.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1, duration: 0.45 }}
+            className="flex h-full flex-col rounded-xl border border-dark-border bg-dark-card p-5 transition-colors hover:border-cyan-accent/40 sm:p-6"
+          >
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-cyan-accent">
+              {item.context}
+            </p>
+            <h3 className="mt-2 text-xl font-bold text-white">{item.title}</h3>
+
+            <dl className="mt-5 space-y-5">
+              <div>
+                <dt className="mb-1.5 text-xs font-bold uppercase tracking-wide text-gray-100">Problema</dt>
+                <dd className="text-sm leading-relaxed text-gray-300">{item.problem}</dd>
               </div>
               <div>
-                <h3 className="text-white font-semibold text-sm">{exp.role}</h3>
-                <p className="text-gray-400 text-xs font-mono mt-0.5">{exp.company}</p>
+                <dt className="mb-1.5 text-xs font-bold uppercase tracking-wide text-gray-100">
+                  Decisiones técnicas
+                </dt>
+                <dd>
+                  <ul className="space-y-2">
+                    {item.decisions.map(decision => (
+                      <li key={decision} className="flex items-start gap-2 text-sm leading-relaxed text-gray-300">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-accent" aria-hidden="true" />
+                        <span>{decision}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </dd>
               </div>
+              <div>
+                <dt className="mb-1.5 text-xs font-bold uppercase tracking-wide text-gray-100">Resultado</dt>
+                <dd className="text-sm leading-relaxed text-gray-300">{item.result}</dd>
+              </div>
+            </dl>
+
+            <div className="mt-auto flex flex-wrap gap-2 pt-6">
+              {item.github && (
+                <a
+                  href={item.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-gray-500/60 px-3 py-2 text-sm font-semibold text-gray-100 transition-colors hover:border-cyan-accent/60 hover:text-cyan-accent"
+                >
+                  <FaGithub aria-hidden="true" />
+                  Código
+                </a>
+              )}
+              {item.demo && (
+                <a
+                  href={item.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-cyan-accent/50 bg-cyan-accent/10 px-3 py-2 text-sm font-semibold text-cyan-accent transition-colors hover:bg-cyan-accent/20"
+                >
+                  <FaExternalLinkAlt className="text-xs" aria-hidden="true" />
+                  Demo
+                </a>
+              )}
             </div>
-            <div className="flex items-center gap-2">
-              <span
-                className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono border ${typeConfig[exp.type].color}`}
-              >
-                {typeConfig[exp.type].label}
-              </span>
-              <span className="text-gray-400 text-xs font-mono">{exp.period}</span>
-            </div>
-          </div>
-
-          {/* Descripción */}
-          <p className="text-gray-300 text-sm leading-relaxed mb-4">{exp.description}</p>
-
-          {/* Logros */}
-          <ul className="space-y-1.5 mb-4">
-            {exp.achievements.map((a, j) => (
-              <li key={j} className="flex items-start gap-2 text-sm text-gray-300">
-                <FaStar className="text-cyan-accent/60 text-[10px] mt-1.5 flex-shrink-0" />
-                {a}
-              </li>
-            ))}
-          </ul>
-
-          {/* Tech */}
-          <div className="flex flex-wrap gap-2">
-            {exp.tech.map(t => (
-              <span
-                key={t}
-                className="px-2 py-0.5 text-[10px] font-mono rounded-full bg-[#0a0a14] text-cyan-accent border border-cyan-accent/20"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        </motion.div>
-      ))}
+          </motion.article>
+        ))}
+      </div>
     </div>
   )
 }

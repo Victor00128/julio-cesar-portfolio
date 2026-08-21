@@ -7,6 +7,7 @@ import {
   FaJsSquare,
   FaGitAlt,
   FaPython,
+  FaCheckCircle,
 } from 'react-icons/fa';
 import {
   SiNextdotjs,
@@ -45,6 +46,21 @@ const ai = [
   // Gemini va aparte porque lleva degradado propio, no currentColor
 ];
 
+const evidence = [
+  {
+    product: 'PrimeHub',
+    detail: 'Roles y permisos, carrito, checkout, pedidos, reparto y panel administrativo.',
+  },
+  {
+    product: 'NEXUS',
+    detail: 'Agentes multi-modelo, ejecución aislada en E2B y recuperación de archivos.',
+  },
+  {
+    product: 'Chatbot Vortex',
+    detail: 'Contexto conversacional, análisis de PDFs e imágenes y configuración BYOK.',
+  },
+]
+
 // Componente de tarjeta individual
 function TechCard({
   icon: Icon,
@@ -66,16 +82,16 @@ function TechCard({
       whileHover={{ scale: 1.08, y: -4 }}
       className={`flex flex-col items-center gap-2 p-4 rounded-xl border transition-all duration-300 group cursor-default ${
         accent
-          ? 'bg-cyan-accent/5 border-cyan-accent/20 hover:border-cyan-accent/50'
-          : 'bg-dark-card border-dark-border hover:border-cyan-accent/35'
+          ? 'bg-cyan-accent/5 border-cyan-accent/30 hover:border-cyan-accent/60'
+          : 'bg-dark-card border-dark-border hover:border-cyan-accent/50'
       }`}
     >
       <Icon
         className={`text-3xl transition-colors duration-300 ${
-          accent ? 'text-cyan-accent' : 'text-gray-400 group-hover:text-cyan-accent'
+          accent ? 'text-cyan-accent' : 'text-gray-300 group-hover:text-cyan-accent'
         }`}
       />
-      <span className="text-xs text-gray-300 group-hover:text-white transition-colors font-mono">
+      <span className="text-xs font-medium text-gray-200 group-hover:text-white transition-colors font-mono">
         {name}
       </span>
     </motion.div>
@@ -164,7 +180,7 @@ function GeminiCard({ index }: { index: number }) {
       {/* Algo mayor que el resto: la chispa tiene los brazos finos y a
           igual tamaño pesa menos que un logo macizo */}
       <GeminiIcon className="w-9 h-9" />
-      <span className="text-xs text-gray-300 group-hover:text-white transition-colors font-mono">
+      <span className="text-xs font-medium text-gray-200 group-hover:text-white transition-colors font-mono">
         Gemini API
       </span>
     </motion.div>
@@ -173,7 +189,7 @@ function GeminiCard({ index }: { index: number }) {
 
 export default function TechStack() {
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-8">
+    <div className="w-full max-w-5xl mx-auto space-y-8">
       {/* Frontend */}
       <div>
         <motion.h3
@@ -228,6 +244,32 @@ export default function TechStack() {
           <GeminiCard index={2} />
         </div>
       </div>
+
+      {/* La lista de herramientas importa menos que la evidencia de haberlas usado. */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="rounded-2xl border border-cyan-accent/25 bg-cyan-accent/5 p-5 sm:p-6"
+      >
+        <div className="mb-4">
+          <p className="font-mono text-xs font-semibold uppercase tracking-wider text-cyan-accent">
+            Evidencia en producto
+          </p>
+          <h3 className="mt-1 text-lg font-bold text-white">Dónde apliqué este stack</h3>
+        </div>
+        <ul className="grid gap-3 md:grid-cols-3">
+          {evidence.map(item => (
+            <li key={item.product} className="flex items-start gap-3 rounded-xl border border-dark-border bg-dark-card p-4">
+              <FaCheckCircle className="mt-0.5 shrink-0 text-cyan-accent" aria-hidden="true" />
+              <div>
+                <span className="block text-sm font-bold text-white">{item.product}</span>
+                <span className="mt-1 block text-sm leading-relaxed text-gray-300">{item.detail}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </motion.div>
     </div>
   );
 }

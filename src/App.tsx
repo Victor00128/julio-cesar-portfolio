@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import TypingEffect from './components/TypingEffect'
 import ParticleField from './components/ParticleField'
@@ -11,27 +11,27 @@ import Education from './components/Education'
 import Experience from './components/Experience'
 import { FaTerminal, FaDownload, FaBriefcase, FaGithub, FaLinkedin, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa'
 
-// Navegación — primary marca los que se ven en desktop; en móvil salen todos
+// Navegación — primero la evidencia de producto y después el contexto personal.
 const nav = [
-  { label: 'Sobre Mí', href: '#about', primary: true },
-  { label: 'Tech', href: '#tech', primary: false },
   { label: 'Proyectos', href: '#projects', primary: true },
-  { label: 'Experiencia', href: '#experience', primary: true },
+  { label: 'Casos', href: '#experience', primary: true },
+  { label: 'Tech', href: '#tech', primary: true },
+  { label: 'Sobre Mí', href: '#about', primary: false },
   { label: 'Educación', href: '#education', primary: false },
-  { label: 'Stats', href: '#stats', primary: false },
+  { label: 'Actividad', href: '#stats', primary: false },
   { label: 'Contacto', href: '#contact', primary: true },
 ]
 
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
-    <section id={id} className="py-20 px-4">
+    <section id={id} className="scroll-mt-16 px-4 py-16 sm:py-20">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         className="text-center mb-12"
       >
-        <h2 className="text-2xl sm:text-3xl font-bold text-white">{title}</h2>
+        <h2 tabIndex={-1} className="text-2xl sm:text-3xl font-bold text-white">{title}</h2>
         <div className="gradient-line w-24 mx-auto mt-4" />
       </motion.div>
       {children}
@@ -41,12 +41,23 @@ function Section({ id, title, children }: { id: string; title: string; children:
 
 function Navbar() {
   const [open, setOpen] = useState(false)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+
+  const handleMobileNavigation = (href: string) => {
+    setOpen(false)
+    requestAnimationFrame(() => {
+      document.querySelector<HTMLElement>(`${href} h2`)?.focus({ preventScroll: true })
+    })
+  }
 
   // Cerrar con Escape — si abriste el menú y te arrepentiste
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false)
+      if (e.key === 'Escape') {
+        setOpen(false)
+        requestAnimationFrame(() => menuButtonRef.current?.focus())
+      }
     }
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
@@ -85,10 +96,12 @@ function Navbar() {
 
         {/* Móvil: hamburguesa */}
         <button
+          ref={menuButtonRef}
           type="button"
           onClick={() => setOpen(o => !o)}
           aria-expanded={open}
           aria-controls="mobile-menu"
+          aria-haspopup="true"
           aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
           className="md:hidden flex items-center justify-center w-11 h-11 -mr-2 rounded-lg text-gray-300 hover:text-cyan-accent hover:bg-cyan-accent/5 transition-colors"
         >
@@ -98,13 +111,16 @@ function Navbar() {
 
       {/* Panel desplegable móvil */}
       {open && (
-        <div id="mobile-menu" className="md:hidden border-t border-dark-border bg-[#0a0a0f]/95 backdrop-blur-xl">
+        <div
+          id="mobile-menu"
+          className="max-h-[calc(100svh-60px)] overflow-y-auto overscroll-contain border-t border-dark-border bg-[#0a0a0f]/95 backdrop-blur-xl md:hidden"
+        >
           <div className="px-4 py-2 flex flex-col">
             {nav.map(item => (
               <a
                 key={item.href}
                 href={item.href}
-                onClick={() => setOpen(false)}
+                onClick={() => handleMobileNavigation(item.href)}
                 className="px-3 py-3.5 text-sm text-gray-300 hover:text-cyan-accent rounded-lg hover:bg-cyan-accent/5 transition-all font-medium"
               >
                 {item.label}
@@ -124,20 +140,20 @@ export default function App() {
 
       <main id="main-content">
         {/* ===== Hero ===== */}
-        <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <section id="hero" className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-16">
           <ParticleField />
           <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
             <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-cyan-accent/5 rounded-full blur-[120px]" />
             <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-purple-accent/5 rounded-full blur-[100px]" />
           </div>
 
-          <div className="relative z-10 text-center px-4 py-24">
+          <div className="relative z-10 w-full max-w-5xl px-4 py-16 text-center sm:py-24">
             {/* Avatar */}
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-              className="w-28 h-28 mx-auto mb-7 rounded-full bg-gradient-to-br from-cyan-accent to-cyan-dark p-[3px]"
+              className="w-24 h-24 sm:w-28 sm:h-28 mx-auto mb-6 rounded-full bg-gradient-to-br from-cyan-accent to-cyan-dark p-[3px]"
             >
               <div className="w-full h-full rounded-full bg-dark-bg overflow-hidden">
                 {/* Foto propia servida desde /public: antes venía de
@@ -161,49 +177,48 @@ export default function App() {
               </div>
             </motion.div>
 
-            {/* Título principal — fijo, no animado: es lo primero que tiene que leerse */}
-            <h1 className="mb-4">
-              <span className="block text-3xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
-                Julio Cesar Morales
-              </span>
-              <span className="block mt-3 text-lg sm:text-2xl font-semibold text-cyan-accent">
-                Desarrollador web · React, TypeScript e integración de IA
-              </span>
+            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-cyan-accent sm:text-sm">
+              Julio Cesar Morales · Montevideo, Uruguay
+            </p>
+
+            {/* Título principal — fijo y directo: rol, especialidad y propuesta de valor. */}
+            <h1 className="mx-auto max-w-4xl text-balance text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
+              Desarrollador Full Stack especializado en React, TypeScript e IA.
             </h1>
 
-            {/* Línea de terminal decorativa */}
-            <TypingEffect />
-
-            {/* Subtítulo */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="text-gray-300 max-w-lg mx-auto text-sm sm:text-base mb-8"
+              className="mx-auto mt-5 max-w-3xl text-pretty text-base leading-relaxed text-gray-200 sm:text-lg"
             >
-              Construyo aplicaciones web completas, de la primera línea al despliegue. Cuando el
-              proyecto lo pide, les conecto <span className="text-cyan-accent">modelos de IA</span> por
-              dentro.
+              Construyo productos web reales: agentes que ejecutan tareas, chatbots multimodales y
+              aplicaciones completas, desde la interfaz hasta el despliegue.
             </motion.p>
+
+            {/* Línea de terminal decorativa */}
+            <div className="mt-6">
+              <TypingEffect />
+            </div>
 
             {/* Botones CTA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 }}
-              className="flex flex-wrap gap-3 justify-center"
+              className="mx-auto flex w-full max-w-3xl flex-col justify-center gap-3 sm:flex-row sm:flex-wrap"
             >
               <a
                 href="#projects"
-                className="px-6 py-3 rounded-lg bg-cyan-accent text-black font-bold text-sm hover:bg-[#00e5ff] transition-all hover:shadow-lg hover:shadow-cyan-accent/20"
+                className="inline-flex min-h-12 items-center justify-center rounded-lg bg-cyan-accent px-6 py-3 text-sm font-bold text-black transition-all hover:bg-[#00e5ff] hover:shadow-lg hover:shadow-cyan-accent/20"
               >
-                Ver Proyectos
+                Ver lo que he construido
               </a>
               <a
                 href="#contact"
-                className="px-6 py-3 rounded-lg border border-cyan-accent/40 text-cyan-accent font-medium text-sm hover:bg-cyan-accent/10 transition-all"
+                className="inline-flex min-h-12 items-center justify-center rounded-lg border border-cyan-accent/60 px-6 py-3 text-sm font-semibold text-cyan-accent transition-all hover:bg-cyan-accent/10"
               >
-                Contáctame
+                Hablemos de tu proyecto
               </a>
               {/*
                 CV: Sube tu archivo PDF a /public/CV-Julio-Cesar.pdf
@@ -214,7 +229,7 @@ export default function App() {
                 download
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 rounded-lg border border-gray-500/50 text-gray-300 font-medium text-sm hover:border-cyan-accent/40 hover:text-cyan-accent transition-all"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-gray-500/70 px-6 py-3 text-sm font-medium text-gray-200 transition-all hover:border-cyan-accent/60 hover:text-cyan-accent"
               >
                 <FaDownload className="text-xs" aria-hidden="true" />
                 Descargar CV
@@ -230,7 +245,7 @@ export default function App() {
             >
               <a
                 href="#contact"
-                className="available-badge flex items-center gap-2 px-4 py-2.5 rounded-full bg-green-500/10 border border-green-500/25 text-green-400 text-xs font-mono hover:bg-green-500/15 transition-all"
+                className="available-badge flex items-center gap-2 px-4 py-2.5 rounded-full bg-green-500/10 border border-green-500/40 text-green-300 text-xs font-mono hover:bg-green-500/15 transition-all"
               >
                 <span className="relative flex h-2 w-2" aria-hidden="true">
                   <span className="animate-ping absolute h-full w-full rounded-full bg-green-400 opacity-60" />
@@ -284,6 +299,27 @@ export default function App() {
           </motion.div>
         </section>
 
+        {/* ===== Proyectos: la evidencia principal aparece inmediatamente después del hero ===== */}
+        <Section id="projects" title="Productos que he construido">
+          <FeaturedProject />
+        </Section>
+
+        <div className="gradient-line max-w-lg mx-auto" />
+
+        {/* ===== Casos de estudio ===== */}
+        <Section id="experience" title="Casos de estudio">
+          <Experience />
+        </Section>
+
+        <div className="gradient-line max-w-lg mx-auto" />
+
+        {/* ===== Tech Stack ===== */}
+        <Section id="tech" title="Tech Stack con evidencia">
+          <TechStack />
+        </Section>
+
+        <div className="gradient-line max-w-lg mx-auto" />
+
         {/* ===== Sobre Mí ===== */}
         <Section id="about" title="Sobre Mí">
           <motion.div
@@ -305,33 +341,28 @@ export default function App() {
                 {/* Párrafo 1: quién soy */}
                 <p className="text-gray-300">
                   <span className="text-cyan-accent mr-2" aria-hidden="true">{'>'}</span>
-                  Me llamo <span className="text-cyan-accent font-semibold">Julio Cesar</span>, soy
-                  desarrollador Full Stack. Llevo cuatro años programando: empecé tocando HTML
-                  para cambiarle cosas a una página que no era mía y seguí desde ahí.
+                  Soy <span className="text-cyan-accent font-semibold">Julio Cesar</span>, desarrollador
+                  Full Stack enfocado en React, TypeScript, Node.js e integración de IA en producto.
                 </p>
 
                 {/* Párrafo 2: especialidad */}
                 <p className="text-gray-300">
                   <span className="text-cyan-accent mr-2" aria-hidden="true">{'>'}</span>
-                  Hoy me especializo en{' '}
-                  <span className="text-cyan-accent font-semibold">React + TypeScript + Node.js</span>{' '}
-                  con un enfoque especial en integrar{' '}
-                  <span className="text-cyan-accent font-semibold">Inteligencia Artificial</span>{' '}
-                  en productos reales. Construí{' '}
-                  <a href="https://chatbot-vortex.vercel.app/" target="_blank" rel="noopener noreferrer"
-                    className="text-cyan-accent hover:underline">
-                    Chatbot Vortex
-                  </a>{' '}
-                  para entender por dentro cómo se conecta un modelo a una aplicación de verdad.
+                  Trabajo de extremo a extremo: diseño la interfaz, conecto servicios y modelos,
+                  resuelvo estados de carga y error, y preparo el despliegue para que el producto se
+                  pueda probar de verdad.
                 </p>
 
                 {/* Párrafo 3: cómo trabajo */}
                 <p className="text-gray-300">
                   <span className="text-cyan-accent mr-2" aria-hidden="true">{'>'}</span>
-                  Suelo hacer que funcione primero y ordenarlo después. Lo que sí reviso siempre
-                  antes de dar algo por terminado es cómo se comporta para{' '}
-                  <span className="text-cyan-accent font-semibold">el usuario final</span>: los
-                  estados de carga, los errores, qué pasa cuando algo falla.
+                  Mis mejores ejemplos son <span className="text-cyan-accent font-semibold">NEXUS</span>,
+                  que ejecuta tareas en un sandbox, y{' '}
+                  <a href="https://chatbot-vortex.vercel.app/" target="_blank" rel="noopener noreferrer"
+                    className="text-cyan-accent underline-offset-4 hover:underline">
+                    Chatbot Vortex
+                  </a>
+                  , una interfaz multimodal con varios proveedores y BYOK.
                 </p>
 
                 {/* Párrafo 4: actualmente */}
@@ -369,36 +400,15 @@ export default function App() {
 
         <div className="gradient-line max-w-lg mx-auto" />
 
-        {/* ===== Tech Stack ===== */}
-        <Section id="tech" title="Tech Stack">
-          <TechStack />
-        </Section>
-
-        <div className="gradient-line max-w-lg mx-auto" />
-
-        {/* ===== Proyectos ===== */}
-        <Section id="projects" title="Proyectos">
-          <FeaturedProject />
-        </Section>
-
-        <div className="gradient-line max-w-lg mx-auto" />
-
-        {/* ===== Experiencia ===== */}
-        <Section id="experience" title="Experiencia práctica">
-          <Experience />
-        </Section>
-
-        <div className="gradient-line max-w-lg mx-auto" />
-
         {/* ===== Educación ===== */}
-        <Section id="education" title="Educación & Cursos">
+        <Section id="education" title="Formación">
           <Education />
         </Section>
 
         <div className="gradient-line max-w-lg mx-auto" />
 
         {/* ===== GitHub Stats ===== */}
-        <Section id="stats" title="GitHub Stats">
+        <Section id="stats" title="Actividad en GitHub">
           <GitHubStats />
         </Section>
 

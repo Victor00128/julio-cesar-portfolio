@@ -5,8 +5,8 @@
   --color-cyan-dark: #0099cc;
   --color-purple-accent: #7c5cbf;
   --color-dark-bg: #0a0a0f;
-  --color-dark-card: #111119;
-  --color-dark-border: #1a1a2e;
+  --color-dark-card: #12121c;
+  --color-dark-border: #2b2b43;
 }
 
 /* Fuentes personalizadas - las agregué para que se vea más distintivo */
@@ -18,6 +18,15 @@ html {
 body {
   background-color: #0a0a0f;
   color: #ffffff;
+  min-width: 320px;
+  overflow-x: clip;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #00C9FF;
+  color: #050509;
 }
 
 /* Monospace para código/terminales */
@@ -85,13 +94,28 @@ body {
 /* Formulario de contacto */
 .form-input {
   background: #0a0a14;
-  border: 1px solid #1a1a2e;
+  border: 1px solid #3b3b55;
   border-radius: 0.75rem;
   padding: 0.75rem 1rem;
   color: #fff;
   width: 100%;
   transition: border-color 0.2s, box-shadow 0.2s;
   font-family: 'Space Grotesk', sans-serif;
+}
+
+.form-input:hover {
+  border-color: #5b6078;
+}
+
+.form-input[aria-invalid="true"] {
+  border-color: #f87171;
+  box-shadow: 0 0 0 1px #f8717155;
+}
+
+select.form-input,
+select.form-input option {
+  background-color: #0a0a14;
+  color: #fff;
 }
 
 /* El foco tiene que verse. Antes era outline:none + un halo cian al 8% sobre
@@ -110,16 +134,38 @@ body {
 /* Foco visible y consistente en todo lo navegable */
 a:focus-visible,
 button:focus-visible,
+input:focus-visible,
 select:focus-visible,
 textarea:focus-visible,
 [tabindex]:focus-visible {
   outline: 2px solid #00C9FF;
-  outline-offset: 3px;
+  outline-offset: 4px;
   border-radius: 4px;
+  box-shadow: 0 0 0 4px #00C9FF22;
+}
+
+/* El estado pulsado añade movimiento y brillo, no depende solo de un cambio de color. */
+a:active,
+button:active {
+  filter: brightness(0.85);
+  transform: translateY(1px);
+}
+
+button:disabled:active {
+  transform: none;
 }
 
 .form-input::placeholder {
-  color: #4a4a6a;
+  color: #7d8299;
+}
+
+/* Honeypot anti-spam: fuera del flujo, sin foco ni exposición a lectores. */
+.honeypot-field {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 /* Skip link para accesibilidad */
